@@ -1,14 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Details from './views/Details.vue'
-import Enrollment from './views/Enrollment.vue'
-import Reservation from './views/Reservation.vue'
-import CreditCard from './views/payment/CreditCard'
-import ECPay from './views/payment/ECPay'
-import Schedule from './views/Schedule'
-import Assessment from './views/Assessment'
-import QRCode from './views/QRCode'
 
 Vue.use(Router)
 
@@ -18,46 +10,6 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
-    },
-    {
-      path: '/details',
-      name: 'Details',
-      component: Details
-    },
-    {
-      path: '/enroll',
-      name: 'Enrollment',
-      component: Enrollment
-    },
-    {
-      path: '/reservation',
-      name: 'Reservation',
-      component: Reservation
-    },
-    {
-      path: '/payment/creditcard',
-      name: 'Credit Card',
-      component: CreditCard
-    },
-    {
-      path: '/payment/ecpay',
-      name: 'EC Pay',
-      component: ECPay
-    },
-    {
-      path: '/schedule',
-      name: 'Schedule',
-      component: Schedule
-    },
-    {
-      path: '/assessment',
-      name: 'Assessment',
-      component: Assessment
-    },
-    {
-      path: '/qrcode',
-      name: 'QR Code',
-      component: QRCode
     },
     {
       path: '/about',
