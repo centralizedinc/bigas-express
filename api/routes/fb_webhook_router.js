@@ -199,34 +199,24 @@ function replaceKeywords(sender, message, text, callback_params) {
     message_string = message_string.replaceAll("{#platform}", "facebook");
 
 
-    console.log('callback_params :', JSON.stringify(callback_params));
-    if (callback_params) {
-        if (text.indexOf("CALLBACK_") > -1) {
-            Object.keys(callback_params).forEach(key => {
-                message_string = message_string.replaceAll(`{#${key}}`, callback_params[key]);
-            })
-        } else if (text.indexOf("ASSESSMENT") > -1) {
-            var data = getAssessment(callback_params.course, callback_params.level);
-            console.log('Assessment data :', data);
-            Object.keys(data)
-                .forEach(key => {
-                    message_string = message_string.replaceAll(`{#${key}}`, data[key])
-                })
-        }
-    }
-    console.log('text :', message_string);
+    // console.log('callback_params :', JSON.stringify(callback_params));
+    // if (callback_params) {
+    //     if (text.indexOf("CALLBACK_") > -1) {
+    //         Object.keys(callback_params).forEach(key => {
+    //             message_string = message_string.replaceAll(`{#${key}}`, callback_params[key]);
+    //         })
+    //     } else if (text.indexOf("ASSESSMENT") > -1) {
+    //         var data = getAssessment(callback_params.course, callback_params.level);
+    //         console.log('Assessment data :', data);
+    //         Object.keys(data)
+    //             .forEach(key => {
+    //                 message_string = message_string.replaceAll(`{#${key}}`, data[key])
+    //             })
+    //     }
+    // }
+    // console.log('text :', message_string);
 
     return JSON.parse(message_string);
-}
-
-const assessments = require('./assessments.json')
-function getAssessment(course, level) {
-    console.log('assessments :', assessments);
-    console.log('course :', course);
-    console.log('level :', level);
-    return assessments.find(x => {
-        return parseInt(x.course) === parseInt(course) && parseInt(x.level) === parseInt(level)
-    })
 }
 
 module.exports = webhook_router;
