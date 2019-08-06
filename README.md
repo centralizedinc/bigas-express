@@ -1,3 +1,3 @@
-# Yupangco Music Academy
+# Bigas Express
 
-A chatbot application of Yupangco Music Academy that helps people to learn more in musical instruments
+A chatbot application for delivery of bigas in ph
