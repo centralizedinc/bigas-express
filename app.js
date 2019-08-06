@@ -36,7 +36,7 @@ app.use('/assets', express.static(path.join(__dirname, './assets')));
 //Routes
 //#############################################################################
 app.use('/api', require('./api/routes/api_router'))
-app.use('/confirm', require('./api/routes/confirm'))
+app.use('/confirm', require('./api/routes/confirmation'))
 app.use('/facebook/setup', require('./api/routes/fb_setup_router'));
 app.use('/facebook/webhook', require('./api/routes/fb_webhook_router'));
 
