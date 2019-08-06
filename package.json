@@ -1,5 +1,5 @@
 {
-  "name": "yupangco-music-academy",
+  "name": "bigas-express",
   "version": "0.1.0",
   "private": true,
   "author": "Mark Jhon Paul Quijom <markjhonpaul.quijom@gmail.com>",
@@ -16,15 +16,20 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "core-js": "^2.6.5",
+    "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.16.2",
+    "helmet": "^3.20.0",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.10",
     "morgan": "^1.9.0",
     "register-service-worker": "^1.6.2",
     "request": "^2.85.0",
     "vue": "^2.6.10",
+    "vue-browser-geolocation": "^1.8.0",
     "vue-router": "^3.0.3",
+    "vue-signature-pad": "^1.1.11",
+    "vue2-google-maps": "^0.10.7",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

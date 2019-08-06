@@ -1,14 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Details from './views/Details.vue'
-import Enrollment from './views/Enrollment.vue'
-import Reservation from './views/Reservation.vue'
-import CreditCard from './views/payment/CreditCard'
-import ECPay from './views/payment/ECPay'
-import Schedule from './views/Schedule'
-import Assessment from './views/Assessment'
-import QRCode from './views/QRCode'
 
 Vue.use(Router)
 
@@ -19,45 +11,21 @@ export default new Router({
       name: 'home',
       component: Home
     },
+
     {
-      path: '/details',
-      name: 'Details',
-      component: Details
+      path: '/order',
+      name: 'Order',
+      component: () => import('./views/Orders.vue')
     },
     {
-      path: '/enroll',
-      name: 'Enrollment',
-      component: Enrollment
-    },
-    {
-      path: '/reservation',
-      name: 'Reservation',
-      component: Reservation
-    },
-    {
-      path: '/payment/creditcard',
+      path: '/payments/creditcard',
       name: 'Credit Card',
-      component: CreditCard
+      component: () => import('./views/payments/CreditCard.vue')
     },
     {
-      path: '/payment/ecpay',
+      path: '/payments/ecpay',
       name: 'EC Pay',
-      component: ECPay
-    },
-    {
-      path: '/schedule',
-      name: 'Schedule',
-      component: Schedule
-    },
-    {
-      path: '/assessment',
-      name: 'Assessment',
-      component: Assessment
-    },
-    {
-      path: '/qrcode',
-      name: 'QR Code',
-      component: QRCode
+      component: () => import('./views/payments/ECPay.vue')
     },
     {
       path: '/about',
@@ -66,6 +34,43 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/delivery',
+      name: 'Delivery Confirmation',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/Delivery.vue')
+    },
+    {
+      path: '/rate',
+      name: 'Rate Us',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/Rate.vue')
+    },
+    // {
+    //   path: '/order',
+    //   name: 'Order Form',
+    //   component: () => import(/* webpackChunkName: "about" */ './views/Order.vue')
+    // },
+    {
+      path: '/order/track',
+      name: 'Track order',
+      component: () => import(/* webpackChunkName: "about" */ './views/Track.vue')
+    },
+    {
+      path: '/order/history',
+      name: 'Order Summary',
+      component: () => import(/* webpackChunkName: "about" */ './views/History.vue')
+    },
+    {
+      path: '/order/map',
+      name: 'Delivery Tracker',
+      component: () => import(/* webpackChunkName: "about" */ './views/Map.vue')
     }
+
   ]
 })
