@@ -50,6 +50,11 @@ export default new Router({
       path: '/order/history',
       name: 'Order Summary',
       component: () => import(/* webpackChunkName: "about" */ './views/History.vue')
+    },
+    {
+      path: '/order/map',
+      name: 'Delivery Tracker',
+      component: () => import(/* webpackChunkName: "about" */ './views/Map.vue')
     }
 
   ]
