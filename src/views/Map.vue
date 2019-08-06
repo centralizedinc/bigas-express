@@ -1,13 +1,12 @@
 <template>
-    <GmapMap
+    <GmapMap id="map" ref="map"
         :center="{lat:coordinates.lat, lng:coordinates.lng}"
         :zoom="16"
         map-type-id="terrain"
-        style="width: 100%; height: 400px"
+        style="width: 100%; height: 500px"
     >
         <GmapMarker
             :position="coordinates"
-            animation= "google.maps.Animation.DROP"
         />
     </GmapMap>
 </template>
@@ -16,7 +15,8 @@
 export default {
     data(){
         return{
-            coordinates:{lat: 37.7699298, lng: -122.4469157}
+            coordinates:{lat: 37.7699298, lng: -122.4469157},
+            animation:{}
         }
     },
     created(){
@@ -24,23 +24,33 @@ export default {
     },
     methods:{
         init(){
-            // this.$getLocation()
-            // .then(coordinates => {
-            //     console.log('coordinates ::: ', coordinates);
-            //     this.coordinates = coordinates
-            // });
-
+            this.$getLocation()
+            .then(coordinates => {
+                console.log('coordinates ::: ', coordinates);
+                this.coordinates = coordinates
+            });
+            var _self = this;
+            
             this.$gmapApiPromiseLazy().then(() => { 
+                console.log('MAP ::: ', new google.maps.LatLng(14.5831, 120.9794))
+                this.animation = google.maps.Animation.DROP
                 var directionsService = new google.maps.DirectionsService();
                 var directionsDisplay = new google.maps.DirectionsRenderer();
-                var haight = new google.maps.LatLng(37.7699298, -122.4469157);
-                var oceanBeach = new google.maps.LatLng(37.7683909618184, -122.51089453697205);
-                var mapOptions = {
-                    zoom: 14,
-                    center: haight
-                }
-                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                directionsDisplay.setMap(map);
+                directionsDisplay.setMap(this.$refs.map.$mapObject)
+                directionsService.route({
+                    origin: new google.maps.LatLng(14.5831, 120.9794),
+                    destination: new google.maps.LatLng(_self.coordinates.lat, _self.coordinates.lng),
+                    travelMode: 'DRIVING'
+                }, function (response, status) {
+                    console.log('response ::: ', response)
+                    if (status === 'OK') {
+                    directionsDisplay.setMap(null)
+                    directionsDisplay.setMap(_self.$refs.map.$mapObject)
+                    directionsDisplay.setDirections(response)
+                    } else {
+                    console.log('Directions request failed due to ' + status)
+                    }
+                })
             })
         }
     }
