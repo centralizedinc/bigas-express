@@ -10,9 +10,31 @@ router.route('/:sender_id')
             "id":req.params.sender_id
           },
           "message":{
-            "text":"This is just a confirmation that your order was already delivered."
+              attachment:{
+                  payload:{
+                      text:"This is just a confirmation that your order was already delivered. Did we meet your expectations? Click the button below to rate us.",
+                      buttons:[{
+                          type:'web_url',
+                          web_url:`${process.env.HOME_URL}/rate`,
+                          text:'Rate Us'
+                      }, 
+                      {
+                        type:'postback',
+                        web_url:'',
+                        text:'No, Thanks'
+                    }]
+                  }
+              }
           }}
         )
+        .then(result=>{
+            console.log('result:::', result.data)
+            res.json(result)
+        })
+        .catch(err=>{
+            console.log(err)
+            res.sendStatus(500)
+        })
 })
 
 
