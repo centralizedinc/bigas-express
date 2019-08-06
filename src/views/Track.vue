@@ -19,9 +19,6 @@
                 </a-col>
                 <a-col :span="16">
                         <a-table :dataSource="details" :columns="cols"></a-table>
-                  
-
-                    
                 </a-col>
               </a-row>
               
