@@ -51,11 +51,11 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/Rate.vue')
     },
-    {
-      path: '/order',
-      name: 'Order Form',
-      component: () => import(/* webpackChunkName: "about" */ './views/Order.vue')
-    },
+    // {
+    //   path: '/order',
+    //   name: 'Order Form',
+    //   component: () => import(/* webpackChunkName: "about" */ './views/Order.vue')
+    // },
     {
       path: '/order/track',
       name: 'Track order',
