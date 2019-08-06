@@ -25,6 +25,7 @@
     "request": "^2.85.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue-signature-pad": "^1.1.11",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
