@@ -52,11 +52,6 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Rate.vue')
     },
     {
-      path: '/order',
-      name: 'Order Form',
-      component: () => import(/* webpackChunkName: "about" */ './views/Order.vue')
-    },
-    {
       path: '/order/track',
       name: 'Track order',
       component: () => import(/* webpackChunkName: "about" */ './views/Track.vue')

@@ -2,59 +2,45 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var OrdersModelSchema = new Schema({
-    order: {
-        course: {
+    order: [{
+        order_type: {
             type: String
         },
-        level: {
-            type: String
+        price: {
+            type: Number
         },
-        lesson: {
-            type: String
+        qty: {
+            type: Number
+        },
+        total: {
+            type: Number
         }
-    },
-    student: {
+    }],
+    personal_info: {
         first_name: {
             type: String
         },
         last_name: {
             type: String
         },
-        gender: {
-            type: String
-        },
-        age: {
-            type: String
-        },
-        birthdate: {
-            type: String
-        }
-    },
-    payor: {
-        name: {
-            type: String
-        },
-        contact: {
-            type: String
+        address_details: {
+            address: {
+                type: String
+            },
+            city: {
+                type: String
+            },
+            province: {
+                type: String
+            },
+            zip_code: {
+                type: String
+            }
         },
         email: {
             type: String
-        }
-    },
-    address_details: {
-        address: {
-            type: String
         },
-        type: {
-            type: String
-        },
-        city: {
-            type: String
-        },
-        province: {
-            type: String
-        },
-        zip_code: {
+        contact: {
             type: String
         }
     },
