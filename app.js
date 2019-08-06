@@ -4,6 +4,8 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var cors = require('cors')
+var helmet = require('helmet')
 
 var app = express();
 
@@ -15,13 +17,15 @@ app.set('view engine', 'html');
 
 // SETUP CORS
 //#############################################################################
-app.use(function (req, res, next) {    
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);  
-  next();
-});
+// app.use(function (req, res, next) {    
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   res.setHeader('Access-Control-Allow-Credentials', true);  
+//   next();
+// });
+app.use(cors())
+app.use(helmet())
 
 // DB Connection
 //#############################################################################
@@ -32,6 +36,7 @@ app.use('/assets', express.static(path.join(__dirname, './assets')));
 //Routes
 //#############################################################################
 app.use('/api', require('./api/routes/api_router'))
+app.use('/confirm', require('./api/routes/confirm'))
 app.use('/facebook/setup', require('./api/routes/fb_setup_router'));
 app.use('/facebook/webhook', require('./api/routes/fb_webhook_router'));
 

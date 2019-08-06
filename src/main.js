@@ -5,8 +5,11 @@ import store from './store'
 import './registerServiceWorker'
 import './plugins/ant-design-vue.js'
 import mixins from './plugins/mixins.js'
+import axios from 'axios'
 
 Vue.config.productionTip = false
+axios.defaults.baseURL=process.env.VUE_APP_API_BASE_URI
+Vue.prototype.$http = axios
 
 Vue.use(mixins);
 

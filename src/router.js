@@ -11,6 +11,7 @@ export default new Router({
       name: 'home',
       component: Home
     },
+
     {
       path: '/order',
       name: 'Order',
@@ -33,6 +34,38 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/delivery',
+      name: 'Delivery Confirmation',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/Delivery.vue')
+    },
+    {
+      path: '/rate',
+      name: 'Rate Us',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/Rate.vue')
+    },
+    {
+      path: '/order',
+      name: 'Order Form',
+      component: () => import(/* webpackChunkName: "about" */ './views/Order.vue')
+    },
+    {
+      path: '/order/track',
+      name: 'Track order',
+      component: () => import(/* webpackChunkName: "about" */ './views/Track.vue')
+    },
+    {
+      path: '/order/history',
+      name: 'Order Summary',
+      component: () => import(/* webpackChunkName: "about" */ './views/History.vue')
     }
+
   ]
 })
