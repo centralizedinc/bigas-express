@@ -13,6 +13,21 @@ export default new Router({
     },
 
     {
+      path: '/order',
+      name: 'Order',
+      component: () => import('./views/Orders.vue')
+    },
+    {
+      path: '/payments/creditcard',
+      name: 'Credit Card',
+      component: () => import('./views/payments/CreditCard.vue')
+    },
+    {
+      path: '/payments/ecpay',
+      name: 'EC Pay',
+      component: () => import('./views/payments/ECPay.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
