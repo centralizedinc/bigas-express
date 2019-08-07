@@ -6,12 +6,12 @@
       <p>
         Credit Card
         <span style="color: red">*</span>
-        <a-input-number
+        <!-- <a-input-number
           placeholder="####-####-####-####"
           style="width: 100%"
           v-model="card_details.details.card_number"
           :formatter="value => value.toString().replace(/(?<=\d{4})\d(\d{0})/, '-')"
-        />
+        /> -->
       </p>
       <p>
         CVC
