@@ -215,17 +215,17 @@ export default {
     }
   },
   created() {
-    this.details.personal_info.first_name = this.$route.query.fname || "";
-    this.details.personal_info.last_name = this.$route.query.lname || "";
-    this.details.sender = this.$route.query.sender || "";
-    if (this.$route.query.type || this.$route.query.type === 0) {
-      this.order.push({
-        order_type: this.$route.query.type,
-        price: this.types[this.$route.query.type].price,
-        qty: 10,
-        total: this.types[this.$route.query.type].price * 10
-      });
-    }
+    // this.details.personal_info.first_name = this.$route.query.fname || "";
+    // this.details.personal_info.last_name = this.$route.query.lname || "";
+    // this.details.sender = this.$route.query.sender || "";
+    // if (this.$route.query.type || this.$route.query.type === 0) {
+    //   this.order.push({
+    //     order_type: this.$route.query.type,
+    //     price: this.types[this.$route.query.type].price,
+    //     qty: 10,
+    //     total: this.types[this.$route.query.type].price * 10
+    //   });
+    // }
   },
   methods: {
     addData() {
