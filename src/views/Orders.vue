@@ -1,18 +1,18 @@
 <template>
   <div>
-    <a-card title="Order Details">
-      <div style="width: 100%">
-        <a-button style="float: right" @click="addData">Add</a-button>
-        <span style="color: red;float: left">{{showAddDataErr}}</span>
-      </div>
-      <a-table
-        style="margin-bottom: 10px"
-        :columns="columns"
-        :dataSource="data"
-        :scroll="{ x: 100 }"
-      >
+    <a-card title="Order Details" :headStyle="head_style">
+      <i><span style="color: red">*</span>Minimum of 10kgs for all types of rice</i>
+      <p style="width: 100%">
+        <a-button @click="addData">Add</a-button>
+        <span style="color: red;float: right">{{showAddDataErr}}</span>
+      </p>
+      <a-table :columns="columns" :dataSource="order" :scroll="{ x: 500 }">
         <template slot="custom_type" slot-scope="text, record, index">
-          <a-select :defaultValue="null" @change="changeType(index, $event)">
+          <a-select
+            style="min-width: 120px;"
+            :defaultValue="$route.query.type || null"
+            @change="changeType(index, $event)"
+          >
             <a-select-option :value="null" key="a" disabled>Choose Type</a-select-option>
             <a-select-option v-for="(item, i) in types" :key="i" :value="i">{{item.name}}</a-select-option>
           </a-select>
@@ -25,11 +25,15 @@
           <span :key="i">{{parseCurrency(text)}}</span>
         </template>
         <template slot="custom_qty" slot-scope="text, record, index">
-          <a-input-number :value="text" @change="changeQty(index, $event)"></a-input-number>
+          <a-input-number :min="10" style="width: 110%;" :value="text" @change="changeQty(index, $event)"></a-input-number>
+        </template>
+        <template slot="action" slot-scope="text, record, index">
+          <a-icon type="delete" theme="twoTone" twoToneColor="#f00" @click="remove(index)" />
         </template>
       </a-table>
+      <span style="font-size: 18px"><i>Total Amount: <b>{{parseCurrency(total_amount)}}</b></i></span>
     </a-card>
-    <a-card title="Personal Details">
+    <a-card title="Personal Details" :headStyle="head_style">
       <p>
         First Name
         <span style="color: red">*</span>
@@ -72,11 +76,19 @@
       </p>
       <p>
         Additional Information
-        <span style="color: red">*</span>
-        <a-textarea v-model="details.personal_info.additional_info"/>
+        <a-textarea v-model="details.personal_info.additional_info" />
       </p>
     </a-card>
-    <a-button type="primary" @click="submit" block>Submit</a-button>
+    <div style="background: #fff">
+      <a-button
+        type="primary"
+        @click="cashOnDelivery"
+        block
+        style="margin-bottom: 10px"
+      >Cash on Delivery</a-button>
+      <a-button type="primary" @click="ecpay" block style="margin-bottom: 10px">Pay thru EC Pay</a-button>
+      <a-button type="primary" @click="creditcard" block>Pay thru Credit Card</a-button>
+    </div>
   </div>
 </template>
 
@@ -84,51 +96,74 @@
 const columns = [
   {
     title: "Type",
-    width: 150,
     dataIndex: "order_type",
     key: "order_type",
     fixed: "left",
+    width: "0%",
     scopedSlots: { customRender: "custom_type" }
   },
   {
     title: "Price",
     dataIndex: "price",
     key: "price",
-    width: 100,
+    width: "25%",
     scopedSlots: { customRender: "custom_price" }
   },
   {
-    title: "Quantity",
+    title: "Kilo/s(kg)",
     dataIndex: "qty",
     key: "qty",
-    width: 50,
+    width: "10%",
     scopedSlots: { customRender: "custom_qty" }
   },
   {
     title: "Total",
     dataIndex: "total",
     key: "total",
-    width: 100,
+    width: "25%",
     scopedSlots: { customRender: "custom_total" }
+  },
+  {
+    title: "",
+    dataIndex: "action",
+    scopedSlots: { customRender: "action" }
   }
 ];
 
 const types = [
   {
     name: "Premium Rice",
-    price: 500
+    price: 80
   },
   {
-    name: "Ordinary Rice",
-    price: 100
+    name: "Wll Milled",
+    price: 63.6
+  },
+  {
+    name: "Regular Milled",
+    price: 45
+  },
+  {
+    name: "Dinorado",
+    price: 50
+  },
+  {
+    name: "Jasponica",
+    price: 60
+  },
+  {
+    name: "Milagrosa",
+    price: 71.6
   }
 ];
 
 export default {
   data() {
     return {
-      data: [],
+      head_style: { "font-weight": "bold" },
+      order: [],
       details: {
+        total_amount: 0,
         additional_info: "",
         personal_info: {
           first_name: "",
@@ -140,46 +175,81 @@ export default {
             zip_code: ""
           },
           email: "",
-          contact: ""
-        }
+          contact: "",
+        },
+        sender: ""
       },
       columns,
       types,
       showAddDataErr: ""
     };
   },
+  computed: {
+    total_amount() {
+      var total = 0;
+      this.order.forEach(order => {
+        total += order.total;
+      });
+      return total;
+    }
+  },
+  created() {
+    this.details.personal_info.first_name = this.$route.query.fname || ""
+    this.details.personal_info.last_name = this.$route.query.lname || ""
+    this.details.sender = this.$route.query.sender || ""
+  },
   methods: {
     addData() {
       this.showAddDataErr = "";
       if (
-        !this.data.length ||
-        this.data[this.data.length - 1].order_type ||
-        this.data[this.data.length - 1].order_type === 0
+        !this.order.length ||
+        this.order[this.order.length - 1].order_type ||
+        this.order[this.order.length - 1].order_type === 0
       ) {
-        this.data.push({
+        this.order.push({
           order_type: "",
           price: 0,
-          qty: 1,
+          qty: 10,
           total: 0
         });
-      } else this.showAddDataErr = "Please use the unused row data first.";
+      } else this.showAddDataErr = "Please use the unused row order first.";
     },
     changeType(index, e) {
-      this.data[index].order_type = e;
-      this.data[index].price = this.types[e].price;
-      this.data[index].total = this.data[index].price * this.data[index].qty;
+      this.order[index].order_type = e;
+      this.order[index].price = this.types[e].price;
+      this.order[index].total = this.order[index].price * this.order[index].qty;
     },
     changeQty(index, e) {
       console.log("e111 :", e);
-      this.data[index].qty = e;
-      this.data[index].total = this.data[index].price * this.data[index].qty;
+      this.order[index].qty = e;
+      this.order[index].total = this.order[index].price * this.order[index].qty;
     },
-    submit(){
-      
+    remove(index) {
+      this.order.splice(index, 1);
+    },
+    cashOnDelivery() {
+      var data = this.deepCopy(this.details);
+      data.order = this.deepCopy(this.order);
+      // this.$store.commit('ORDERS', data)
+      // this.$router.push('/payment/creditcard')
+    },
+    ecpay() {
+      var data = this.deepCopy(this.details);
+      data.order = this.deepCopy(this.order);
+    },
+    creditcard() {
+      var data = this.deepCopy(this.details);
+      data.order = this.deepCopy(this.order);
+      data.total_amount = this.total_amount
+      this.$store.commit("ORDERS", data);
+      this.$router.push("/payments/creditcard");
     }
   }
 };
 </script>
 
 <style>
+.pointer {
+  cursor: pointer;
+}
 </style>
