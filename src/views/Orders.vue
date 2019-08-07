@@ -172,7 +172,7 @@ const types = [
   }
 ];
 
-import CreditCard from "./components/HelloWorld";
+import CreditCard from "../components/HelloWorld";
 
 export default {
   // components: {
