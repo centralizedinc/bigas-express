@@ -127,8 +127,10 @@ function setupPersistentMenu(callback) {
                         type: "nested",
                         call_to_actions: [{
                                 title: "❓ FAQs",
-                                type: "postback",
-                                payload: "ABOUT"
+                                type: "web_url",
+                                webview_height_ratio: "tall",
+                                url: "https: //bigas-express.herokuapp.com/#/about?sender={#sender}",
+                                "messenger_extensions": true
                             },
 
                             {
