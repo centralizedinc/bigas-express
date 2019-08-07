@@ -2,7 +2,7 @@
     <div style="text-align:left">
         <a-row>
           <a-col :span="24">
-              <a-card title="Confirm Delivery Details">
+              <a-card title="Acknowledgement Reciept">
                   <a-form>
                       <a-divider orientation="right">
                         <span style="font-size:12px">Customer Details</span>
@@ -22,9 +22,14 @@
                         <a-textarea rows="5" v-model="params.address"/>
                     </a-form-item>
                     <a-divider orientation="right">
-                        <span style="font-size:12px">Product Details</span>
+                        <span style="font-size:12px">Product Details</span>                        
                     </a-divider>
-                    <a-form-item
+                    <a-table :columns="cols" :dataSource="orders" bordered>
+                        <template slot="footer">
+                            Total Amount: 3,380.00
+                            </template>
+                    </a-table>
+                    <!-- <a-form-item
                         :label-col="{span:6}"
                         :wrapper-col="{span:18}"
                         label="Rice Type">
@@ -35,7 +40,7 @@
                         :wrapper-col="{span:18}"
                         label="Quantity">
                         <a-input v-model="params.address"/>
-                    </a-form-item>
+                    </a-form-item> -->
                     <a-form-item
                         :label-col="{span:6}"
                         :wrapper-col="{span:18}"
@@ -69,17 +74,54 @@ export default {
     data(){
         return{
             isLoading:false,
-            params:{},
+            params:{
+                name:'Wan Dela Cruz',
+                address:'2320 Chino Roces, Makati City'
+            },
+            sender:'',
+            cols:[
+                {
+                    title: 'Name',
+                    dataIndex: 'order_type'
+                },
+                {
+                    title: 'Unit Price',
+                    dataIndex: 'price'
+                },
+                {
+                    title: 'Quantity',
+                    dataIndex: 'qty'
+                },
+                {
+                    title: 'Total Amount',
+                    dataIndex: 'total'
+                }
+            ],
+            orders:[
+                {
+                    order_type: "Milagrosa",
+                    price: "71.60",
+                    qty: "25",
+                    total: "1,790.00"
+                },
+                {
+                    order_type: "Well Milled Rice",
+                    price: "63.60",
+                    qty: "25",
+                    total: "1,590.00"
+                }
+            ]
         }
     },
     methods:{
         init(){
-            this.params = new Buffer(this.$route.params, 'base64').toString();
+            // this.params = new Buffer(this.$route.params, 'base64').toString();
+            this.sender = this.$route.query.sender || '2621143671251795'
         },
         confirm(){
             var _self =this;
             this.isLoading = true;
-            this.$http.post(`/confirm/${this.params.sender_id}`)
+            this.$http.post(`/confirm/${this.sender}`)
             .then(result=>{
                 _self.isLoading=false;
                 _self.$notification.success({

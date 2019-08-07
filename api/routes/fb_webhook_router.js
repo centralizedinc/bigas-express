@@ -80,19 +80,19 @@ webhook_router.route("/")
                     && keyword !== "") {
                     var params = null
                     console.log('keyword :', keyword);
-                    if (keyword.indexOf("CALLBACK_") > -1) {
-                        var data = keyword.split("_#");
-                        var [course, level, lesson] = data[1].split("_");
-                        console.log('data :', data);
-                        params = { course, level, lesson }
-                        keyword = data[0]
-                    } else if (keyword.indexOf("ASSESSMENT_") > -1) {
-                        var data = keyword.split("_#");
-                        var [course, level] = data[1].split("_");
-                        console.log('data :', data);
-                        params = { course, level }
-                        keyword = data[0]
-                    }
+                    // if (keyword.indexOf("CALLBACK_") > -1) {
+                    //     var data = keyword.split("_#");
+                    //     var [course, level, lesson] = data[1].split("_");
+                    //     console.log('data :', data);
+                    //     params = { course, level, lesson }
+                    //     keyword = data[0]
+                    // } else if (keyword.indexOf("ASSESSMENT_") > -1) {
+                    //     var data = keyword.split("_#");
+                    //     var [course, level] = data[1].split("_");
+                    //     console.log('data :', data);
+                    //     params = { course, level }
+                    //     keyword = data[0]
+                    // }
                     console.log('processRequest :', JSON.stringify({ keyword, params }));
                     processRequest(sender, keyword, params, () => {
                         res.sendStatus(200);
