@@ -4,7 +4,6 @@ const constants = require('../utils/constants_helper')
 
 router.route('/:sender_id')
 .post((req, res)=>{
-    console.log(`REQ ::: `, JSON.stringify(req))
     axios.post(
         `https://graph.facebook.com/v2.6/me/messages?access_token=${constants.fb_token}`,
         {"recipient":{
