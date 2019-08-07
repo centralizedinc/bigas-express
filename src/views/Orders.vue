@@ -12,7 +12,7 @@
         <template slot="custom_type" slot-scope="text, record, index">
           <a-select
             style="min-width: 120px;"
-            :defaultValue="$route.query.type || null"
+            :defaultValue="types[$route.query.type] || null"
             @change="changeType(index, $event)"
           >
             <a-select-option :value="null" key="a" disabled>Choose Type</a-select-option>
@@ -248,7 +248,7 @@ export default {
         sender: this.$store.state.sender,
         postback: "CALLBACK_CONFIRM"
       });
-      
+
     },
     ecpay() {
       var data = this.deepCopy(this.details);
