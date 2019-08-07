@@ -197,7 +197,7 @@ export default {
   },
   computed: {
     default_type(){
-      return this.types[this.$route.query.type] || null
+      return this.types[parseInt(this.$route.query.type)] || null
     },
     total_amount() {
       var total = 0;
