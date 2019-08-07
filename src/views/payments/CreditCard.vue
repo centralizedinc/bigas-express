@@ -76,11 +76,11 @@ export default {
       return { "font-weight": "bold" };
     }
   },
-  created() {
-    console.log("this.$store.state.details :", this.$store.state.details);
-    this.card_details.mode = 0;
-    this.card_details.sender = this.$store.state.sender;
-  },
+  // created() {
+  //   console.log("this.$store.state.details :", this.$store.state.details);
+  //   this.card_details.mode = 0;
+  //   this.card_details.sender = this.$store.state.sender;
+  // },
   methods: {
     submit() {
       this.$store.dispatch("SAVE_ORDER", this.$store.state.details).then((result) => {
