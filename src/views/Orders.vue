@@ -1,106 +1,109 @@
 <template>
   <div>
-    <a-card title="Order Details" :headStyle="head_style">
-      <i>
-        <span style="color: red">*</span>Minimum of 10kgs for all types of rice
-      </i>
-      <p style="width: 100%">
-        <a-button @click="addData">Add</a-button>
-        <span style="color: red;float: right">{{showAddDataErr}}</span>
-      </p>
-      <a-table :columns="columns" :dataSource="order" :scroll="{ x: 500 }">
-        <template slot="custom_type" slot-scope="text, record, index">
-          <a-select
-            style="min-width: 120px;"
-            :defaultValue="parseInt(text)"
-            @change="changeType(index, $event)"
-          >
-            <a-select-option :value="-1" key="a" disabled>Choose Type</a-select-option>
-            <a-select-option v-for="(item, i) in types" :key="i" :value="i">{{item.name}}</a-select-option>
-          </a-select>
-        </template>
-        <template
-          v-for="(item, i) in ['custom_price', 'custom_total']"
-          :slot="item"
-          slot-scope="text"
-        >
-          <span :key="i">{{parseCurrency(text)}}</span>
-        </template>
-        <template slot="custom_qty" slot-scope="text, record, index">
-          <a-input-number
-            :min="10"
-            style="width: 110%;"
-            :value="text"
-            @change="changeQty(index, $event)"
-          ></a-input-number>
-        </template>
-        <template slot="action" slot-scope="text, record, index">
-          <a-icon type="delete" theme="twoTone" twoToneColor="#f00" @click="remove(index)" />
-        </template>
-      </a-table>
-      <span style="font-size: 18px">
+    <div v-if="!isCC">
+      <a-card title="Order Details" :headStyle="head_style">
         <i>
-          Total Amount:
-          <b>{{parseCurrency(total_amount)}}</b>
+          <span style="color: red">*</span>Minimum of 10kgs for all types of rice
         </i>
-      </span>
-    </a-card>
-    <a-card title="Personal Details" :headStyle="head_style">
-      <p>
-        First Name
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.first_name"></a-input>
-      </p>
-      <p>
-        Last Name
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.last_name"></a-input>
-      </p>
-      <p>
-        Contact Number
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.contact"></a-input>
-      </p>
-      <p>
-        Email
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.email"></a-input>
-      </p>
-      <p>
-        Address
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.address_details.address"></a-input>
-      </p>
-      <p>
-        City
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.address_details.city"></a-input>
-      </p>
-      <p>
-        Province
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.address_details.province"></a-input>
-      </p>
-      <p>
-        Zip Code
-        <span style="color: red">*</span>
-        <a-input v-model="details.personal_info.address_details.zip_code"></a-input>
-      </p>
-      <p>
-        Additional Information
-        <a-textarea v-model="details.personal_info.additional_info" />
-      </p>
-    </a-card>
-    <div style="background: #fff">
-      <a-button
-        type="primary"
-        @click="cashOnDelivery"
-        block
-        style="margin-bottom: 10px"
-      >Cash on Delivery</a-button>
-      <a-button type="primary" @click="ecpay" block style="margin-bottom: 10px">Pay thru EC Pay</a-button>
-      <a-button type="primary" @click="creditcard" block>Pay thru Credit Card</a-button>
+        <p style="width: 100%">
+          <a-button @click="addData">Add</a-button>
+          <span style="color: red;float: right">{{showAddDataErr}}</span>
+        </p>
+        <a-table :columns="columns" :dataSource="order" :scroll="{ x: 500 }">
+          <template slot="custom_type" slot-scope="text, record, index">
+            <a-select
+              style="min-width: 120px;"
+              :defaultValue="parseInt(text)"
+              @change="changeType(index, $event)"
+            >
+              <a-select-option :value="-1" key="a" disabled>Choose Type</a-select-option>
+              <a-select-option v-for="(item, i) in types" :key="i" :value="i">{{item.name}}</a-select-option>
+            </a-select>
+          </template>
+          <template
+            v-for="(item, i) in ['custom_price', 'custom_total']"
+            :slot="item"
+            slot-scope="text"
+          >
+            <span :key="i">{{parseCurrency(text)}}</span>
+          </template>
+          <template slot="custom_qty" slot-scope="text, record, index">
+            <a-input-number
+              :min="10"
+              style="width: 110%;"
+              :value="text"
+              @change="changeQty(index, $event)"
+            ></a-input-number>
+          </template>
+          <template slot="action" slot-scope="text, record, index">
+            <a-icon type="delete" theme="twoTone" twoToneColor="#f00" @click="remove(index)" />
+          </template>
+        </a-table>
+        <span style="font-size: 18px">
+          <i>
+            Total Amount:
+            <b>{{parseCurrency(total_amount)}}</b>
+          </i>
+        </span>
+      </a-card>
+      <a-card title="Personal Details" :headStyle="head_style">
+        <p>
+          First Name
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.first_name"></a-input>
+        </p>
+        <p>
+          Last Name
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.last_name"></a-input>
+        </p>
+        <p>
+          Contact Number
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.contact"></a-input>
+        </p>
+        <p>
+          Email
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.email"></a-input>
+        </p>
+        <p>
+          Address
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.address_details.address"></a-input>
+        </p>
+        <p>
+          City
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.address_details.city"></a-input>
+        </p>
+        <p>
+          Province
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.address_details.province"></a-input>
+        </p>
+        <p>
+          Zip Code
+          <span style="color: red">*</span>
+          <a-input v-model="details.personal_info.address_details.zip_code"></a-input>
+        </p>
+        <p>
+          Additional Information
+          <a-textarea v-model="details.personal_info.additional_info" />
+        </p>
+      </a-card>
+      <div style="background: #fff">
+        <a-button
+          type="primary"
+          @click="cashOnDelivery"
+          block
+          style="margin-bottom: 10px"
+        >Cash on Delivery</a-button>
+        <a-button type="primary" @click="ecpay" block style="margin-bottom: 10px">Pay thru EC Pay</a-button>
+        <a-button type="primary" @click="creditcard" block>Pay thru Credit Card</a-button>
+      </div>
     </div>
+    <credit-card v-else />
   </div>
 </template>
 
@@ -169,7 +172,12 @@ const types = [
   }
 ];
 
+import CreditCard from "./payments/CreditCard";
+
 export default {
+  components: {
+    CreditCard
+  },
   data() {
     return {
       head_style: { "font-weight": "bold" },
@@ -193,7 +201,8 @@ export default {
       },
       columns,
       types,
-      showAddDataErr: ""
+      showAddDataErr: "",
+      isCC: false
     };
   },
   computed: {
@@ -221,11 +230,14 @@ export default {
   methods: {
     addData() {
       this.showAddDataErr = "";
-      console.log('this.order[this.order.length - 1].order_type :', this.order[this.order.length - 1].order_type);
+      console.log(
+        "this.order[this.order.length - 1].order_type :",
+        this.order[this.order.length - 1].order_type
+      );
       if (
         !this.order.length ||
         (this.order[this.order.length - 1].order_type &&
-        this.order[this.order.length - 1].order_type >= 0) ||
+          this.order[this.order.length - 1].order_type >= 0) ||
         this.order[this.order.length - 1].order_type === 0
       ) {
         this.order.push({
@@ -234,7 +246,9 @@ export default {
           qty: 10,
           total: 0
         });
-      } else this.showAddDataErr = "Kindly select your order from the next row below.";
+      } else
+        this.showAddDataErr =
+          "Kindly select your order from the next row below.";
     },
     changeType(index, e) {
       this.order[index].order_type = e;
@@ -288,7 +302,8 @@ export default {
       data.order = this.deepCopy(this.order);
       data.total_amount = this.total_amount;
       this.$store.commit("ORDERS", data);
-      this.$router.push("/payments/creditcard");
+      this.isCC = true;
+      // this.$router.push("/payments/creditcard");
     }
   }
 };
