@@ -11,6 +11,7 @@ router.route('/:sender_id')
           },
           "message":{
               attachment:{
+                  type:'template',
                   payload:{
                       text:"This is just a confirmation that your order was already delivered. Did we meet your expectations? Click the button below to rate us.",
                       buttons:[{
