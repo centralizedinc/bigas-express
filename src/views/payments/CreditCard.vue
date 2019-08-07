@@ -86,7 +86,7 @@ export default {
       this.$store.dispatch("SAVE_ORDER", this.$store.state.details).then((result) => {
         console.log('result :', result);
         return this.$store.dispatch("CALLBACK_CONFIRM", {
-        sender: this.$store.state.sender,
+        sender: this.$store.state.details.sender,
         postback: "CALLBACK_CONFIRMED"
       })
       }).catch((err) => {

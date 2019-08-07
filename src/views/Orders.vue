@@ -12,7 +12,7 @@
         <template slot="custom_type" slot-scope="text, record, index">
           <a-select
             style="min-width: 120px;"
-            :defaultValue="types[$route.query.type] || null"
+            :defaultValue="default_type"
             @change="changeType(index, $event)"
           >
             <a-select-option :value="null" key="a" disabled>Choose Type</a-select-option>
@@ -22,8 +22,7 @@
         <template
           v-for="(item, i) in ['custom_price', 'custom_total']"
           :slot="item"
-          slot-scope="text"
-        >
+          slot-scope="text">
           <span :key="i">{{parseCurrency(text)}}</span>
         </template>
         <template slot="custom_qty" slot-scope="text, record, index">
@@ -197,6 +196,9 @@ export default {
     };
   },
   computed: {
+    default_type(){
+      return this.types[this.$route.query.type] || null
+    },
     total_amount() {
       var total = 0;
       this.order.forEach(order => {
@@ -206,6 +208,7 @@ export default {
     }
   },
   created() {
+    console.log('this.$route.query :', JSON.stringify(this.$route.query));
     this.details.personal_info.first_name = this.$route.query.fname || "";
     this.details.personal_info.last_name = this.$route.query.lname || "";
     this.details.sender = this.$route.query.sender || "";
@@ -248,7 +251,7 @@ export default {
       this.$store.dispatch("SAVE_ORDER", data).then((result) => {
         console.log('result :', result);
         return this.$store.dispatch("CALLBACK_CONFIRM", {
-        sender: this.$store.state.sender,
+        sender: this.$route.query.sender,
         postback: "CALLBACK_CONFIRMED"
       })
       }).catch((err) => {
@@ -262,7 +265,7 @@ export default {
       this.$store.dispatch("SAVE_ORDER", data).then((result) => {
         console.log('result :', result);
         return this.$store.dispatch("CALLBACK_CONFIRM", {
-        sender: this.$store.state.sender,
+        sender: this.$route.query.sender,
         postback: "CALLBACK_CONFIRMED"
       })
       }).catch((err) => {
