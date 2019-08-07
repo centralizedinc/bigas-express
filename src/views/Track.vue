@@ -7,13 +7,13 @@
                 <a-col :span="8">
                     <a-card title="Progress">
                         <a-steps :current="step_curr" size="small" direction="vertical">
-                            <a-step title="Order created" ></a-step>
-                            <a-step title="Order prepared"></a-step>
-                            <a-step title="Order ready to ship"></a-step>
-                            <a-step title="Order has shipped to courier"></a-step>
-                            <a-step title="Order has receive by the courier"></a-step>
-                            <a-step title="Order in-transit to client"></a-step>
-                            <a-step title="Order received by the client"></a-step>
+                            <a-step title="Created" ></a-step>
+                            <a-step title="Prepared"></a-step>
+                            <a-step title="Ready to ship"></a-step>
+                            <a-step title="Shipped to courier"></a-step>
+                            <a-step title="Receive by the courier"></a-step>
+                            <a-step title="In-transit to client"></a-step>
+                            <a-step title="Received by the client"></a-step>
                             <a-step title="Delivered"></a-step>
                         </a-steps>
                     </a-card>
@@ -68,9 +68,9 @@ export default {
                 this.details.push({
                     date: this.formatDate(new Date()),
                     process: `Process #${this.step_curr}`,
-                    details:`Lorem ipsum....`
+                    details: (this.status(this.step_curr))
                 })
-                if(this.step_curr > 5){
+                if(this.step_curr > 7){
                     this.step_curr = 0;
                     this.details = []
                 }
