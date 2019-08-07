@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './registerServiceWorker'
+// import './registerServiceWorker'
 import './plugins/ant-design-vue.js'
 import mixins from './plugins/mixins.js'
 import axios from 'axios'
@@ -18,7 +18,7 @@ Vue.use(mixins);
 Vue.use(VueGeolocation);
 Vue.use(VueGoogleMaps, {
   load: {
-    key: process.env.VUE_APP_GOOGLE_MAP_KEY ,
+    key: 'AIzaSyCHB6d8PoTLPZ2dtnxSPSHFpeu3pxkiA6s' || process.env.VUE_APP_GOOGLE_MAP_KEY,
   },
   installComponents: true
 })
