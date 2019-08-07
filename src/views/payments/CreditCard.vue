@@ -83,10 +83,15 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.dispatch("CALLBACK_CONFIRM", {
+      this.$store.dispatch("SAVE_ORDER", this.$store.state.details).then((result) => {
+        console.log('result :', result);
+        return this.$store.dispatch("CALLBACK_CONFIRM", {
         sender: this.$store.state.sender,
-        postback: "CALLBACK_CONFIRM"
+        postback: "CALLBACK_CONFIRMED"
       })
+      }).catch((err) => {
+        console.log('err :', err);
+      });
     }
   }
 };

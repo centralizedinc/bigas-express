@@ -242,20 +242,31 @@ export default {
     cashOnDelivery() {
       var data = this.deepCopy(this.details);
       data.order = this.deepCopy(this.order);
-      // this.$store.commit('ORDERS', data)
-      // this.$router.push('/payment/creditcard')
-      this.$store.dispatch("CALLBACK_CONFIRM", {
+      var data = this.deepCopy(this.details);
+      data.order = this.deepCopy(this.order);
+      data.total_amount = this.total_amount;
+      this.$store.dispatch("SAVE_ORDER", data).then((result) => {
+        console.log('result :', result);
+        return this.$store.dispatch("CALLBACK_CONFIRM", {
         sender: this.$store.state.sender,
-        postback: "CALLBACK_CONFIRM"
+        postback: "CALLBACK_CONFIRMED"
+      })
+      }).catch((err) => {
+        console.log('err :', err);
       });
-
     },
     ecpay() {
       var data = this.deepCopy(this.details);
       data.order = this.deepCopy(this.order);
-      this.$store.dispatch("CALLBACK_CONFIRM", {
+      data.total_amount = this.total_amount;
+      this.$store.dispatch("SAVE_ORDER", data).then((result) => {
+        console.log('result :', result);
+        return this.$store.dispatch("CALLBACK_CONFIRM", {
         sender: this.$store.state.sender,
-        postback: "CALLBACK_CONFIRM"
+        postback: "CALLBACK_CONFIRMED"
+      })
+      }).catch((err) => {
+        console.log('err :', err);
       });
     },
     creditcard() {
