@@ -17,20 +17,19 @@ router.route('/:sender_id')
                       text:"This is just a confirmation that your order was already delivered. Did we meet your expectations? Click the button below to rate us.",
                       buttons:[{
                           type:'web_url',
-                          web_url:'https://bigas-express.herokuapp.com/rate',
-                          text:'Rate Us'
+                          url:'https://bigas-express.herokuapp.com/#/rate',
+                          title:'Rate Us'
                       }, 
                       {
                         type:'postback',
-                        web_url:'GET_STARTED',
-                        text:'No, Thanks'
+                        payload:'GET_STARTED',
+                        title:'No, Thanks'
                     }]
                   }
               }
           }}
         )
         .then(result=>{
-            console.log('result:::', result.data)
             res.json(result)
         })
         .catch(err=>{
