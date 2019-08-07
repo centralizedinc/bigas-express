@@ -172,7 +172,7 @@ const types = [
   }
 ];
 
-import CreditCard from "./payments/CreditCard";
+// import CreditCard from "./payments/CreditCard";
 
 export default {
   // components: {
