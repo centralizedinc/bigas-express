@@ -43,4 +43,8 @@ export default class WebviewAPI {
                 });
         })
     }
+
+    saveOrder(details) {
+        return axios.post('https://bigas-express.herokuapp.com/api/order', details)
+    }
 }
