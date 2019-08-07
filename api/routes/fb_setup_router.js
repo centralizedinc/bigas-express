@@ -121,24 +121,6 @@ function setupPersistentMenu(callback) {
                                 payload: "TR_MSG"
                             }
                         ]
-                    },
-                    {
-                        title: " ℹ️ About Bigas Express",
-                        type: "nested",
-                        call_to_actions: [{
-                                title: "❓ FAQs",
-                                type: "web_url",
-                                webview_height_ratio: "tall",
-                                url: "https: //bigas-express.herokuapp.com/#/about?sender={#sender}",
-                                "messenger_extensions": true
-                            },
-
-                            {
-                                title: " 🌾 About Us",
-                                type: "postback",
-                                payload: "ABT"
-                            }
-                        ]
                     }
                 ]
             },
