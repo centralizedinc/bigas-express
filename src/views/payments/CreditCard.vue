@@ -71,29 +71,29 @@ export default {
       }
     };
   },
-  computed: {
-    card_head_style() {
-      return { "font-weight": "bold" };
-    }
-  },
+  // computed: {
+  //   card_head_style() {
+  //     return { "font-weight": "bold" };
+  //   }
+  // },
   // created() {
   //   console.log("this.$store.state.details :", this.$store.state.details);
   //   this.card_details.mode = 0;
   //   this.card_details.sender = this.$store.state.sender;
   // },
-  methods: {
-    submit() {
-      this.$store.dispatch("SAVE_ORDER", this.$store.state.details).then((result) => {
-        console.log('result :', result);
-        return this.$store.dispatch("CALLBACK_CONFIRM", {
-        sender: this.$store.state.details.sender,
-        postback: "CALLBACK_CONFIRMED"
-      })
-      }).catch((err) => {
-        console.log('err :', err);
-      });
-    }
-  }
+  // methods: {
+  //   submit() {
+  //     this.$store.dispatch("SAVE_ORDER", this.$store.state.details).then((result) => {
+  //       console.log('result :', result);
+  //       return this.$store.dispatch("CALLBACK_CONFIRM", {
+  //       sender: this.$store.state.details.sender,
+  //       postback: "CALLBACK_CONFIRMED"
+  //     })
+  //     }).catch((err) => {
+  //       console.log('err :', err);
+  //     });
+  //   }
+  // }
 };
 </script>
 
