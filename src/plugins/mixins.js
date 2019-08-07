@@ -20,6 +20,25 @@ export default {
                     minutes = minutes < 10 ? '0'+minutes : minutes;
                     var strTime = hours + ':' + minutes + ' ' + ampm;
                     return date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
+                },
+                status(stat) {
+                    if (stat === 0) {
+                        return "Order was placed by the client";
+                    } else if (stat === 1) {
+                        return "Order is being prepared by the supplier";
+                    } else if (stat === 2) {
+                        return "The order is ready to be shipped to courier";
+                    } else if (stat === 3) {
+                        return "The order has been shipped to the courier";
+                    } else if (stat === 4) {
+                        return "Received by the courier and preparing to be shipped";
+                    } else if (stat === 5) {
+                        return "The order is in transit to client";
+                    } else if (stat === 6) {
+                        return "Order recieved by the client";
+                    } else if (stat === 7) {
+                        return "Delivery completed";
+                    }
                 }
             }
         });
