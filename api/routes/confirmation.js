@@ -17,12 +17,12 @@ router.route('/:sender_id')
                       text:"This is just a confirmation that your order was already delivered. Did we meet your expectations? Click the button below to rate us.",
                       buttons:[{
                           type:'web_url',
-                          web_url:`${process.env.HOME_URL}/rate`,
+                          web_url:'https://bigas-express.herokuapp.com/rate',
                           text:'Rate Us'
                       }, 
                       {
                         type:'postback',
-                        web_url:'',
+                        web_url:'GET_STARTED',
                         text:'No, Thanks'
                     }]
                   }
