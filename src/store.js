@@ -16,6 +16,9 @@ export default new Vuex.Store({
   actions: {
     CALLBACK_CONFIRM(context, data) {
       return new WebviewApi().callbackWebview(data.sender, data.postback)
+    },
+    SAVE_ORDER(context, data) {
+      return new WebviewApi().saveOrder(data)
     }
   }
 })
