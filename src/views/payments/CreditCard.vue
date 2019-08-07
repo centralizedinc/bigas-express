@@ -82,7 +82,12 @@ export default {
     this.card_details.sender = this.$store.state.sender;
   },
   methods: {
-    submit() {}
+    submit() {
+      this.$store.dispatch("CALLBACK_CONFIRM", {
+        sender: this.$store.state.sender,
+        postback: "CALLBACK_CONFIRM"
+      })
+    }
   }
 };
 </script>

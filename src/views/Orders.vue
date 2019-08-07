@@ -232,10 +232,18 @@ export default {
       data.order = this.deepCopy(this.order);
       // this.$store.commit('ORDERS', data)
       // this.$router.push('/payment/creditcard')
+      this.$store.dispatch("CALLBACK_CONFIRM", {
+        sender: this.$store.state.sender,
+        postback: "CALLBACK_CONFIRM"
+      })
     },
     ecpay() {
       var data = this.deepCopy(this.details);
       data.order = this.deepCopy(this.order);
+      this.$store.dispatch("CALLBACK_CONFIRM", {
+        sender: this.$store.state.sender,
+        postback: "CALLBACK_CONFIRM"
+      })
     },
     creditcard() {
       var data = this.deepCopy(this.details);
