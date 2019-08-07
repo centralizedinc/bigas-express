@@ -85,7 +85,7 @@
 
         <h3 class=h1>9. Mabango po ba, malinis at malambot ang bigas nyo?</h3>
         <ul>
-        <li>Mabango po at amoy bagong bayo ang lahat ng bigas ng BIgasPh, dahil freshly milled po ito.</li>
+        <li>Mabango po at amoy bagong bayo ang lahat ng bigas ng Bigas Express, dahil freshly milled po ito.</li>
         <li>
           Malinis, puro at walang halong ibang di magandang bigas.
           Karamihan po ng ating bigas ay malambot. May mga klase naman po ng bigas na sadyang matigas o
