@@ -59,6 +59,7 @@ export default new Router({
       path: '/order/history',
       name: 'Order Summary',
       component: () => import( /* webpackChunkName: "about" */ './views/History.vue')
+      // component: () => import( /* webpackChunkName: "about" */ './views/Test.vue')
     },
     {
       path: '/order/map',
