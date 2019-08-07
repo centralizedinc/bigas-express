@@ -30,7 +30,7 @@ router.route('/:sender_id')
           }}
         )
         .then(result=>{
-            res.json(result)
+            res.sendStatus(200)
         })
         .catch(err=>{
             console.log(`ERROR ::: `,err)
