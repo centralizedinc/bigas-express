@@ -18,7 +18,8 @@ Vue.use(mixins);
 Vue.use(VueGeolocation);
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyCHB6d8PoTLPZ2dtnxSPSHFpeu3pxkiA6s' || process.env.VUE_APP_GOOGLE_MAP_KEY,
+    // key: 'AIzaSyCHB6d8PoTLPZ2dtnxSPSHFpeu3pxkiA6s' || process.env.VUE_APP_GOOGLE_MAP_KEY,
+    key:  process.env.VUE_APP_GOOGLE_MAP_KEY
   },
   installComponents: true
 })
