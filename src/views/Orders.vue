@@ -198,9 +198,9 @@ export default {
   },
   computed: {
     default_type() {
-      console.log('parseInt(this.$route.query.type :', parseInt(this.$route.query.type);
+      console.log('parseInt(this.$route.query.type :', parseInt(this.$route.query.type));
       console.log('this.types[parseInt(this.$route.query.type)] :', this.types[parseInt(this.$route.query.type)]);
-      return this.types[parseInt(this.$route.query.type)].name || null;
+      return parseInt(this.$route.query.type) || null;
     },
     total_amount() {
       var total = 0;
