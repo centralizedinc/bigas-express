@@ -22,7 +22,8 @@
         <template
           v-for="(item, i) in ['custom_price', 'custom_total']"
           :slot="item"
-          slot-scope="text">
+          slot-scope="text"
+        >
           <span :key="i">{{parseCurrency(text)}}</span>
         </template>
         <template slot="custom_qty" slot-scope="text, record, index">
@@ -196,8 +197,8 @@ export default {
     };
   },
   computed: {
-    default_type(){
-      return this.types[parseInt(this.$route.query.type)] || null
+    default_type() {
+      return this.types[parseInt(this.$route.query.type)] || null;
     },
     total_amount() {
       var total = 0;
@@ -208,7 +209,7 @@ export default {
     }
   },
   created() {
-    console.log('this.$route.query :', JSON.stringify(this.$route.query));
+    console.log("this.$route.query :", JSON.stringify(this.$route.query));
     this.details.personal_info.first_name = this.$route.query.fname || "";
     this.details.personal_info.last_name = this.$route.query.lname || "";
     this.details.sender = this.$route.query.sender || "";
@@ -248,29 +249,35 @@ export default {
       var data = this.deepCopy(this.details);
       data.order = this.deepCopy(this.order);
       data.total_amount = this.total_amount;
-      this.$store.dispatch("SAVE_ORDER", data).then((result) => {
-        console.log('result :', result);
-        return this.$store.dispatch("CALLBACK_CONFIRM", {
-        sender: this.$route.query.sender,
-        postback: "CALLBACK_CONFIRMED"
-      })
-      }).catch((err) => {
-        console.log('err :', err);
-      });
+      this.$store
+        .dispatch("SAVE_ORDER", data)
+        .then(result => {
+          console.log("result :", result);
+          return this.$store.dispatch("CALLBACK_CONFIRM", {
+            sender: this.$route.query.sender,
+            postback: "CALLBACK_CONFIRMED"
+          });
+        })
+        .catch(err => {
+          console.log("err :", err);
+        });
     },
     ecpay() {
       var data = this.deepCopy(this.details);
       data.order = this.deepCopy(this.order);
       data.total_amount = this.total_amount;
-      this.$store.dispatch("SAVE_ORDER", data).then((result) => {
-        console.log('result :', result);
-        return this.$store.dispatch("CALLBACK_CONFIRM", {
-        sender: this.$route.query.sender,
-        postback: "CALLBACK_CONFIRMED"
-      })
-      }).catch((err) => {
-        console.log('err :', err);
-      });
+      this.$store
+        .dispatch("SAVE_ORDER", data)
+        .then(result => {
+          console.log("result :", result);
+          return this.$store.dispatch("CALLBACK_CONFIRM", {
+            sender: this.$route.query.sender,
+            postback: "CALLBACK_CONFIRMED"
+          });
+        })
+        .catch(err => {
+          console.log("err :", err);
+        });
     },
     creditcard() {
       var data = this.deepCopy(this.details);
