@@ -1,7 +1,9 @@
 <template>
   <div>
     <a-card title="Order Details" :headStyle="head_style">
-      <i><span style="color: red">*</span>Minimum of 10kgs for all types of rice</i>
+      <i>
+        <span style="color: red">*</span>Minimum of 10kgs for all types of rice
+      </i>
       <p style="width: 100%">
         <a-button @click="addData">Add</a-button>
         <span style="color: red;float: right">{{showAddDataErr}}</span>
@@ -25,13 +27,23 @@
           <span :key="i">{{parseCurrency(text)}}</span>
         </template>
         <template slot="custom_qty" slot-scope="text, record, index">
-          <a-input-number :min="10" style="width: 110%;" :value="text" @change="changeQty(index, $event)"></a-input-number>
+          <a-input-number
+            :min="10"
+            style="width: 110%;"
+            :value="text"
+            @change="changeQty(index, $event)"
+          ></a-input-number>
         </template>
         <template slot="action" slot-scope="text, record, index">
           <a-icon type="delete" theme="twoTone" twoToneColor="#f00" @click="remove(index)" />
         </template>
       </a-table>
-      <span style="font-size: 18px"><i>Total Amount: <b>{{parseCurrency(total_amount)}}</b></i></span>
+      <span style="font-size: 18px">
+        <i>
+          Total Amount:
+          <b>{{parseCurrency(total_amount)}}</b>
+        </i>
+      </span>
     </a-card>
     <a-card title="Personal Details" :headStyle="head_style">
       <p>
@@ -175,7 +187,7 @@ export default {
             zip_code: ""
           },
           email: "",
-          contact: "",
+          contact: ""
         },
         sender: ""
       },
@@ -194,9 +206,9 @@ export default {
     }
   },
   created() {
-    this.details.personal_info.first_name = this.$route.query.fname || ""
-    this.details.personal_info.last_name = this.$route.query.lname || ""
-    this.details.sender = this.$route.query.sender || ""
+    this.details.personal_info.first_name = this.$route.query.fname || "";
+    this.details.personal_info.last_name = this.$route.query.lname || "";
+    this.details.sender = this.$route.query.sender || "";
   },
   methods: {
     addData() {
@@ -232,15 +244,24 @@ export default {
       data.order = this.deepCopy(this.order);
       // this.$store.commit('ORDERS', data)
       // this.$router.push('/payment/creditcard')
+      this.$store.dispatch("CALLBACK_CONFIRM", {
+        sender: this.$store.state.sender,
+        postback: "CALLBACK_CONFIRM"
+      });
+      
     },
     ecpay() {
       var data = this.deepCopy(this.details);
       data.order = this.deepCopy(this.order);
+      this.$store.dispatch("CALLBACK_CONFIRM", {
+        sender: this.$store.state.sender,
+        postback: "CALLBACK_CONFIRM"
+      });
     },
     creditcard() {
       var data = this.deepCopy(this.details);
       data.order = this.deepCopy(this.order);
-      data.total_amount = this.total_amount
+      data.total_amount = this.total_amount;
       this.$store.commit("ORDERS", data);
       this.$router.push("/payments/creditcard");
     }
