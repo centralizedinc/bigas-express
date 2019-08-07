@@ -2,7 +2,29 @@
     <div style="text-align:left">
         <a-row>
           <a-col :span="24">
-              <a-card title="Acknowledgement Reciept">
+              <a-card title="Login" v-if="step == 0">
+                  <a-form>
+                    <a-form-item
+                        :label-col="{span:6}"
+                        :wrapper-col="{span:18}"
+                        label="Username"
+                        >
+                        <a-input placeholder="Username"/>
+                    </a-form-item>
+                    <a-form-item
+                        :label-col="{span:6}"
+                        :wrapper-col="{span:18}"
+                        label="Password"
+                        >
+                        <a-input type="password" placeholder="Username"/>
+                    </a-form-item>
+                    <a-form-item
+                        :wrapper-col="{span:18, offset:6}">
+                        <a-button type="primary" :loading="isLoading" @click="step++">Confirm</a-button>
+                    </a-form-item>
+                  </a-form>
+              </a-card>
+              <a-card title="Acknowledgement Receipt" v-else>
                   <a-form>
                       <a-divider orientation="right">
                         <span style="font-size:12px">Customer Details</span>
@@ -73,6 +95,7 @@ export default {
     },
     data(){
         return{
+            step:0,
             isLoading:false,
             params:{
                 name:'Wan Dela Cruz',
@@ -121,11 +144,11 @@ export default {
         confirm(){
             var _self =this;
             this.isLoading = true;
-            this.$http.post(`/confirm/${this.sender}`)
+            this.$http.post('/confirm/2621143671251795')
             .then(result=>{
                 _self.isLoading=false;
                 _self.$notification.success({
-                    message:`${_self.params.ref_no} - Delivery Confirmed!`,
+                    message:'Order No: 2019-0021830-1 - Delivery Confirmed!',
                     description:'The item(s) was successfully delivered.'
                 })
             })
