@@ -65,7 +65,7 @@
             that you ordered, top to bottom.
           </li>
           <li>
-            BigasPh ordering is very easy. You can order thru the website, the app and thru FB Chat. You have an excellent 24/7
+            Bigas Express ordering is very easy. You can order thru the website, the app and thru FB Chat. You have an excellent 24/7
             Chat Support Team, who are ready to answer all your questions, get your order and re-order, and assist you to make your
             online bigas experience fun and easy.
           </li>
