@@ -221,10 +221,12 @@ export default {
   methods: {
     addData() {
       this.showAddDataErr = "";
+      console.log('this.order[this.order.length - 1].order_type :', this.order[this.order.length - 1].order_type);
       if (
         !this.order.length ||
-        this.order[this.order.length - 1].order_type ||
-        this.order[this.order.length - 1].order_type >= 0
+        (this.order[this.order.length - 1].order_type &&
+        this.order[this.order.length - 1].order_type >= 0) ||
+        this.order[this.order.length - 1].order_type === 0
       ) {
         this.order.push({
           order_type: -1,
@@ -232,7 +234,7 @@ export default {
           qty: 10,
           total: 0
         });
-      } else this.showAddDataErr = "Please use the unused row order first.";
+      } else this.showAddDataErr = "Kindly select your order from the next row below.";
     },
     changeType(index, e) {
       this.order[index].order_type = e;
