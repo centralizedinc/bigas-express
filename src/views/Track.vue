@@ -7,11 +7,13 @@
                 <a-col :span="8">
                     <a-card title="Progress">
                         <a-steps :current="step_curr" size="small" direction="vertical">
-                            <a-step title="Preparing" ></a-step>
-                            <a-step title="Processing"></a-step>
-                            <a-step title="Releasing"></a-step>
-                            <a-step title="Dispatch"></a-step>
-                            <a-step title="In-transit"></a-step>
+                            <a-step title="Order created" ></a-step>
+                            <a-step title="Order prepared"></a-step>
+                            <a-step title="Order ready to ship"></a-step>
+                            <a-step title="Order has shipped to courier"></a-step>
+                            <a-step title="Order has receive by the courier"></a-step>
+                            <a-step title="Order in-transit to client"></a-step>
+                            <a-step title="Order received by the client"></a-step>
                             <a-step title="Delivered"></a-step>
                         </a-steps>
                     </a-card>
