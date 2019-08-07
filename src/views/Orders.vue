@@ -15,7 +15,7 @@
             :defaultValue="parseInt(text)"
             @change="changeType(index, $event)"
           >
-            <a-select-option value="null" key="a" disabled>Choose Type</a-select-option>
+            <a-select-option :value="-1" key="a" disabled>Choose Type</a-select-option>
             <a-select-option v-for="(item, i) in types" :key="i" :value="i">{{item.name}}</a-select-option>
           </a-select>
         </template>
@@ -224,10 +224,10 @@ export default {
       if (
         !this.order.length ||
         this.order[this.order.length - 1].order_type ||
-        this.order[this.order.length - 1].order_type === 0
+        this.order[this.order.length - 1].order_type >= 0
       ) {
         this.order.push({
-          order_type: "null",
+          order_type: -1,
           price: 0,
           qty: 10,
           total: 0
