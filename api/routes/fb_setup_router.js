@@ -97,13 +97,14 @@ function setupGetStarted(callback) {
 function setupPersistentMenu(callback) {
 
     var json = {
-        "persistent_menu": [{
-                "locale": "default",
-                "composer_input_disabled": true,
-                "call_to_actions": [{
-                        "title": "🌾 Place Order",
-                        "type": "postback",
-                        "payload": "BULK"
+        persistent_menu: [{
+                locale: "default",
+                composer_input_disabled: true,
+                call_to_actions: [{
+                        title: "🌾 Place Order",
+                        type: "postback",
+                        payload: "BULK"
+
                     },
 
                     {
@@ -112,13 +113,12 @@ function setupPersistentMenu(callback) {
                         call_to_actions: [{
                                 title: "📑 Order History",
                                 type: "postback",
-                                payload: "OH1"
+                                payload: "OH_MSG"
                             },
-
                             {
                                 title: "🏍 Track My Order",
                                 type: "postback",
-                                payload: "TR1"
+                                payload: "TR_MSG"
                             }
                         ]
                     },
