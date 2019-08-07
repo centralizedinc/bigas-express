@@ -30,7 +30,6 @@ router.route('/:sender_id')
           }}
         )
         .then(result=>{
-            console.log('result:::', result.data)
             res.json(result)
         })
         .catch(err=>{
