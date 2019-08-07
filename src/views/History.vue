@@ -5,10 +5,11 @@
         <a-card title="Orders">
           <a-table :dataSource="orders" :columns="cols" :loading="isLoading">
             <template slot="status" slot-scope="text, record">
-              <a-popconfirm title="Would you like to track your order?">
-                <a @click="toTracker(record)" v-if="text ==='On Delivery' ">On Delivery</a>
-                <p v-else>{{text}}</p>
-              </a-popconfirm>
+              <a @click="toTracker(record)" v-if="text ==='On Delivery' ">On Delivery</a>
+              <p v-else>{{text}}</p>
+              <!-- <a-popconfirm title="Would you like to track your order?">
+                
+              </a-popconfirm>-->
             </template>
             <a-table
               slot="expandedRowRender"
@@ -30,24 +31,15 @@ export default {
       isLoading: false,
       orders: [
         {
-          _id: "lygh23671347",
-          total_amount: "₱" + 1700,
-          created_date: "May 5, 2019",
-          delivered_date: "May 5, 2019",
+          _id: "2019-0021830-1",
           status: "Delivered"
         },
         {
-          _id: "kj1h23lkj12",
-          total_amount: "₱" + 1700,
-          created_date: "August 7, 2019",
-          delivered_date: "-",
+          _id: "2019-0025820-2",
           status: "On Delivery"
         },
         {
-          _id: "yt1f23ytf",
-          total_amount: "₱" + 1700,
-          created_date: "August 5, 2019",
-          delivered_date: "August 5, 2019",
+          _id: "2019-0021710-3",
           status: "Delivered"
         }
       ],
@@ -55,18 +47,6 @@ export default {
         {
           title: "Order #",
           dataIndex: "_id"
-        },
-        {
-          title: "Amount Purchased",
-          dataIndex: "total_amount"
-        },
-        {
-          title: "Order Date",
-          dataIndex: "created_date"
-        },
-        {
-          title: "Delivered Date",
-          dataIndex: "delivered_date"
         },
         {
           title: "Status",
@@ -77,27 +57,44 @@ export default {
       items: [
         {
           order_type: "Dinorado Rice",
+          created_date: "May 5, 2019",
+          delivered_date: "May 5, 2019",
           price: "₱" + 50,
           qty: "10 kgs",
           total: "₱" + 500
         },
         {
           order_type: "Jasponica Rice",
+          created_date: "August 7, 2019",
+          delivered_date: "-",
           price: "₱" + 60,
           qty: "10 kgs",
           total: "₱" + 600
         },
         {
           order_type: "Milagrosa Rice",
+          created_date: "August 5, 2019",
+          delivered_date: "August 5, 2019",
           price: "₱" + 60,
           qty: "10 kgs",
           total: "₱" + 600
+        },
+        {
+          total: "Total Amount: ₱1,700"
         }
       ],
       colOrder: [
         {
           title: "Rice Name",
           dataIndex: "order_type"
+        },
+        {
+          title: "Order Date",
+          dataIndex: "created_date"
+        },
+        {
+          title: "Delivered Date",
+          dataIndex: "delivered_date"
         },
         {
           title: "Price per Kilo(kg)",
@@ -121,17 +118,20 @@ export default {
     init() {
       //todo: load from table
       this.isLoading = true;
-      this.$http
-        .get("/")
-        .then(results => {
-          this.isLoading = false;
-          this.orders = results.data;
-          console.log("got orders: " + JSON.stringify(this.orders));
-        })
-        .catch(err => {
-          console.log("error catch: " + err);
-          this.isLoading = false;
-        });
+      setInterval(() => {
+        this.isLoading = false;
+      }, 3000);
+      //   this.$http
+      //     .get("/")
+      //     .then(results => {
+      //       this.isLoading = false;
+      //       this.orders = results.data;
+      //       console.log("got orders: " + JSON.stringify(this.orders));
+      //     })
+      //     .catch(err => {
+      //       console.log("error catch: " + err);
+      //       this.isLoading = false;
+      //     });
     },
     toTracker(data) {
       console.log("to tracker data: " + JSON.stringify(data));
