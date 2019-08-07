@@ -23,7 +23,7 @@
           </li>
           <li>Yes WE CAN DO COD on any orders!</li>
         </ul>
-        <h3>4. Ano ang Minimum Order to Avail the Free Deliver</h3>
+        <h3 class=h1>4. Ano ang Minimum Order to Avail the Free Deliver</h3>
         <ul>
           <li>For brown and white rice, the minimum order is 1 sack of 25kg package.</li>
           <li>For colored rice like black, red, purple or native blend, the minimum order is 5kg package.</li>
