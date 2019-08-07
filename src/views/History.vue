@@ -31,21 +31,21 @@ export default {
       isLoading: false,
       orders: [
         {
-          _id: "lygh23671347",
-          total_amount: "₱1,7000",
+          _id: "2019-0021830-1",
+          total_amount: "₱1,700",
           created_date: "May 5, 2019",
           delivered_date: "May 5, 2019",
           status: "Delivered"
         },
         {
-          _id: "kj1h23lkj12",
+          _id: "2019-0025820-2",
           total_amount: "₱1,700",
           created_date: "August 7, 2019",
           delivered_date: "-",
           status: "On Delivery"
         },
         {
-          _id: "yt1f23ytf",
+          _id: "2019-0021710-3",
           total_amount: "₱1,700",
           created_date: "August 5, 2019",
           delivered_date: "August 5, 2019",
