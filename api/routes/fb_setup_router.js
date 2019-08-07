@@ -75,15 +75,15 @@ function setupGetStarted(callback) {
     var json = {
         "setting_type": "call_to_actions",
         "thread_state": "new_thread",
-        "call_to_actions": [
-            {
-                "payload": "GET_STARTED"
-            }
-        ]
+        "call_to_actions": [{
+            "payload": "GET_STARTED"
+        }]
     };
 
     axios.post(
-        constants_helper.fb_thread_url + "?" + qs.stringify({ access_token: constants_helper.fb_token }),
+        constants_helper.fb_thread_url + "?" + qs.stringify({
+            access_token: constants_helper.fb_token
+        }),
         json
     ).then((response) => {
         callback(response.data);
@@ -97,20 +97,46 @@ function setupGetStarted(callback) {
 function setupPersistentMenu(callback) {
 
     var json = {
-        "persistent_menu": [
-            {
+        "persistent_menu": [{
                 "locale": "default",
                 "composer_input_disabled": true,
-                "call_to_actions": [
-                    {
-                        "title": "GET STARTED",
+                "call_to_actions": [{
+                        "title": "🌾 Place Order",
                         "type": "postback",
-                        "payload": "GET_STARTED"
+                        "payload": "BULK"
+                    },
+
+                    {
+                        title: " 📋 My Orders",
+                        type: "nested",
+                        call_to_actions: [{
+                                title: "📑 Order History",
+                                type: "postback",
+                                payload: "OH1"
+                            },
+
+                            {
+                                title: "🏍 Track My Order",
+                                type: "postback",
+                                payload: "TR1"
+                            }
+                        ]
                     },
                     {
-                        "title": "About",
-                        "type": "postback",
-                        "payload": "ABOUT"
+                        title: " ℹ️ About Bigas Express",
+                        type: "nested",
+                        call_to_actions: [{
+                                title: "❓ FAQs",
+                                type: "postback",
+                                payload: "ABOUT"
+                            },
+
+                            {
+                                title: " 🌾 About Us",
+                                type: "postback",
+                                payload: "ABT"
+                            }
+                        ]
                     }
                 ]
             },
@@ -128,10 +154,14 @@ function setupPersistentMenu(callback) {
         if (persistent_menu && persistent_menu.message) {
             console.log(persistent_menu.message);
             json = persistent_menu.message
-            console.log('object :', constants_helper.fb_messenger_profile + "?" + qs.stringify({ access_token: constants_helper.fb_token }));
+            console.log('object :', constants_helper.fb_messenger_profile + "?" + qs.stringify({
+                access_token: constants_helper.fb_token
+            }));
         }
         return axios.post(
-            constants_helper.fb_messenger_profile + "?" + qs.stringify({ access_token: constants_helper.fb_token }),
+            constants_helper.fb_messenger_profile + "?" + qs.stringify({
+                access_token: constants_helper.fb_token
+            }),
             json
         )
     }).then((response) => {
@@ -152,7 +182,9 @@ function setupWhitelist(callback) {
     }
 
     axios.post(
-        constants_helper.fb_thread_url + "?" + qs.stringify({ access_token: constants_helper.fb_token }),
+        constants_helper.fb_thread_url + "?" + qs.stringify({
+            access_token: constants_helper.fb_token
+        }),
         json
     ).then((response) => {
         callback(response.data);
