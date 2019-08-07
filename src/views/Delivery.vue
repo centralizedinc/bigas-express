@@ -121,7 +121,7 @@ export default {
         confirm(){
             var _self =this;
             this.isLoading = true;
-            this.$http.post('/confirm/2621143671251795`)
+            this.$http.post('/confirm/2621143671251795')
             .then(result=>{
                 _self.isLoading=false;
                 _self.$notification.success({
