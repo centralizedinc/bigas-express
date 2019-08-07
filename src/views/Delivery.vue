@@ -116,7 +116,7 @@ export default {
     methods:{
         init(){
             // this.params = new Buffer(this.$route.params, 'base64').toString();
-            this.sender = this.$route.query.sender
+            this.sender = this.$route.query.sender || '2621143671251795'
         },
         confirm(){
             var _self =this;

@@ -19,7 +19,8 @@ router.route('/:sender_id')
                       buttons:[{
                           type:'web_url',
                           url:'https://bigas-express.herokuapp.com/#/rate',
-                          title:'Rate Us'
+                          title:'Rate Us',
+                          webview_height_ratio:"compact"
                       }, 
                       {
                         type:'postback',
