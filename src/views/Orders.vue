@@ -175,9 +175,9 @@ const types = [
 import CreditCard from "./payments/CreditCard";
 
 export default {
-  components: {
-    CreditCard
-  },
+  // components: {
+  //   CreditCard
+  // },
   data() {
     return {
       head_style: { "font-weight": "bold" },
