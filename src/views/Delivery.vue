@@ -2,7 +2,29 @@
     <div style="text-align:left">
         <a-row>
           <a-col :span="24">
-              <a-card title="Acknowledgement Receipt">
+              <a-card title="Login" v-if="step == 0">
+                  <a-form>
+                    <a-form-item
+                        :label-col="{span:6}"
+                        :wrapper-col="{span:18}"
+                        label="Username"
+                        >
+                        <a-input placeholder="Username"/>
+                    </a-form-item>
+                    <a-form-item
+                        :label-col="{span:6}"
+                        :wrapper-col="{span:18}"
+                        label="Password"
+                        >
+                        <a-input type="password" placeholder="Username"/>
+                    </a-form-item>
+                    <a-form-item
+                        :wrapper-col="{span:18, offset:6}">
+                        <a-button type="primary" :loading="isLoading" @click="step++">Confirm</a-button>
+                    </a-form-item>
+                  </a-form>
+              </a-card>
+              <a-card title="Acknowledgement Receipt" v-else>
                   <a-form>
                       <a-divider orientation="right">
                         <span style="font-size:12px">Customer Details</span>
@@ -73,6 +95,7 @@ export default {
     },
     data(){
         return{
+            step:0,
             isLoading:false,
             params:{
                 name:'Wan Dela Cruz',
