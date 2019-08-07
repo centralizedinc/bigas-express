@@ -16,6 +16,9 @@ var OrdersModelSchema = new Schema({
             type: Number
         }
     }],
+    total_amount: {
+        type: Number
+    },
     personal_info: {
         first_name: {
             type: String

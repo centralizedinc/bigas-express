@@ -2,7 +2,7 @@
     <div style="text-align:left">
         <a-row>
           <a-col :span="24">
-              <a-card title="Acknowledgement Reciept">
+              <a-card title="Acknowledgement Receipt">
                   <a-form>
                       <a-divider orientation="right">
                         <span style="font-size:12px">Customer Details</span>
@@ -116,16 +116,16 @@ export default {
     methods:{
         init(){
             // this.params = new Buffer(this.$route.params, 'base64').toString();
-            this.sender = this.$route.query.sender
+            this.sender = this.$route.query.sender || '2621143671251795'
         },
         confirm(){
             var _self =this;
             this.isLoading = true;
-            this.$http.post(`/confirm/${this.sender}`)
+            this.$http.post('/confirm/2621143671251795')
             .then(result=>{
                 _self.isLoading=false;
                 _self.$notification.success({
-                    message:`${_self.params.ref_no} - Delivery Confirmed!`,
+                    message:'Order No: 2019-0021830-1 - Delivery Confirmed!',
                     description:'The item(s) was successfully delivered.'
                 })
             })
