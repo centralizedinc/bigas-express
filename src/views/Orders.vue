@@ -12,10 +12,10 @@
         <template slot="custom_type" slot-scope="text, record, index">
           <a-select
             style="min-width: 120px;"
-            :defaultValue="default_type"
+            :defaultValue="parseInt(text)"
             @change="changeType(index, $event)"
           >
-            <a-select-option :value="null" key="a" disabled>Choose Type</a-select-option>
+            <a-select-option value="null" key="a" disabled>Choose Type</a-select-option>
             <a-select-option v-for="(item, i) in types" :key="i" :value="i">{{item.name}}</a-select-option>
           </a-select>
         </template>
@@ -197,11 +197,6 @@ export default {
     };
   },
   computed: {
-    default_type() {
-      console.log('parseInt(this.$route.query.type :', parseInt(this.$route.query.type));
-      console.log('this.types[parseInt(this.$route.query.type)] :', this.types[parseInt(this.$route.query.type)]);
-      return parseInt(this.$route.query.type) || null;
-    },
     total_amount() {
       var total = 0;
       this.order.forEach(order => {
@@ -211,10 +206,17 @@ export default {
     }
   },
   created() {
-    console.log("this.$route.query :", JSON.stringify(this.$route.query));
     this.details.personal_info.first_name = this.$route.query.fname || "";
     this.details.personal_info.last_name = this.$route.query.lname || "";
     this.details.sender = this.$route.query.sender || "";
+    if (this.$route.query.type || this.$route.query.type === 0) {
+      this.order.push({
+        order_type: this.$route.query.type,
+        price: this.types[this.$route.query.type].price,
+        qty: 10,
+        total: this.types[this.$route.query.type].price * 10
+      });
+    }
   },
   methods: {
     addData() {
@@ -225,7 +227,7 @@ export default {
         this.order[this.order.length - 1].order_type === 0
       ) {
         this.order.push({
-          order_type: "",
+          order_type: "null",
           price: 0,
           qty: 10,
           total: 0
@@ -238,7 +240,6 @@ export default {
       this.order[index].total = this.order[index].price * this.order[index].qty;
     },
     changeQty(index, e) {
-      console.log("e111 :", e);
       this.order[index].qty = e;
       this.order[index].total = this.order[index].price * this.order[index].qty;
     },
@@ -271,7 +272,6 @@ export default {
       this.$store
         .dispatch("SAVE_ORDER", data)
         .then(result => {
-          console.log("result :", result);
           return this.$store.dispatch("CALLBACK_CONFIRM", {
             sender: this.$route.query.sender,
             postback: "CALLBACK_CONFIRMED"
