@@ -1,4 +1,4 @@
-const router = require('express').Router()
+const router = (require('express')).Router()
 const axios = require('axios')
 const constants = require('../utils/constants_helper')
 
@@ -11,16 +11,18 @@ router.route('/:sender_id')
           },
           "message":{
               attachment:{
+                  type:'template',
                   payload:{
+                    template_type:"button",
                       text:"This is just a confirmation that your order was already delivered. Did we meet your expectations? Click the button below to rate us.",
                       buttons:[{
                           type:'web_url',
-                          web_url:`${process.env.HOME_URL}/rate`,
+                          web_url:'https://bigas-express.herokuapp.com/rate',
                           text:'Rate Us'
                       }, 
                       {
                         type:'postback',
-                        web_url:'',
+                        web_url:'GET_STARTED',
                         text:'No, Thanks'
                     }]
                   }
@@ -32,7 +34,7 @@ router.route('/:sender_id')
             res.json(result)
         })
         .catch(err=>{
-            console.log(err)
+            console.log(`ERROR ::: `,err)
             res.sendStatus(500)
         })
 })
