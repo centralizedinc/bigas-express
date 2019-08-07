@@ -121,22 +121,6 @@ function setupPersistentMenu(callback) {
                                 payload: "TR_MSG"
                             }
                         ]
-                    },
-                    {
-                        title: " ℹ️ About Bigas Express",
-                        type: "nested",
-                        call_to_actions: [{
-                                title: "❓ FAQs",
-                                type: "postback",
-                                payload: "ABOUT"
-                            },
-
-                            {
-                                title: " 🌾 About Us",
-                                type: "postback",
-                                payload: "ABT"
-                            }
-                        ]
                     }
                 ]
             },
