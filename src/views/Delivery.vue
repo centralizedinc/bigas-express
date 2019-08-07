@@ -2,7 +2,7 @@
     <div style="text-align:left">
         <a-row>
           <a-col :span="24">
-              <a-card title="Acknowledgement Reciept">
+              <a-card title="Acknowledgement Receipt">
                   <a-form>
                       <a-divider orientation="right">
                         <span style="font-size:12px">Customer Details</span>
@@ -121,7 +121,7 @@ export default {
         confirm(){
             var _self =this;
             this.isLoading = true;
-            this.$http.post(`/confirm/${this.sender}`)
+            this.$http.post('/confirm/2621143671251795`)
             .then(result=>{
                 _self.isLoading=false;
                 _self.$notification.success({
