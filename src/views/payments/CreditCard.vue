@@ -6,12 +6,11 @@
       <p>
         Credit Card
         <span style="color: red">*</span>
-        <!-- <a-input-number
+        <a-input-number
           placeholder="####-####-####-####"
           style="width: 100%"
           v-model="card_details.details.card_number"
-          :formatter="value => value.toString().replace(/(?<=\d{4})\d(\d{0})/, '-')"
-        /> -->
+        />
       </p>
       <p>
         CVC
@@ -71,29 +70,29 @@ export default {
       }
     };
   },
-  // computed: {
-  //   card_head_style() {
-  //     return { "font-weight": "bold" };
-  //   }
-  // },
-  // created() {
-  //   console.log("this.$store.state.details :", this.$store.state.details);
-  //   this.card_details.mode = 0;
-  //   this.card_details.sender = this.$store.state.sender;
-  // },
-  // methods: {
-  //   submit() {
-  //     this.$store.dispatch("SAVE_ORDER", this.$store.state.details).then((result) => {
-  //       console.log('result :', result);
-  //       return this.$store.dispatch("CALLBACK_CONFIRM", {
-  //       sender: this.$store.state.details.sender,
-  //       postback: "CALLBACK_CONFIRMED"
-  //     })
-  //     }).catch((err) => {
-  //       console.log('err :', err);
-  //     });
-  //   }
-  // }
+  computed: {
+    card_head_style() {
+      return { "font-weight": "bold" };
+    }
+  },
+  created() {
+    console.log("this.$store.state.details :", this.$store.state.details);
+    this.card_details.mode = 0;
+    this.card_details.sender = this.$store.state.sender;
+  },
+  methods: {
+    submit() {
+      this.$store.dispatch("SAVE_ORDER", this.$store.state.details).then((result) => {
+        console.log('result :', result);
+        return this.$store.dispatch("CALLBACK_CONFIRM", {
+        sender: this.$store.state.details.sender,
+        postback: "CALLBACK_CONFIRMED"
+      })
+      }).catch((err) => {
+        console.log('err :', err);
+      });
+    }
+  }
 };
 </script>
 
