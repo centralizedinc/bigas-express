@@ -32,7 +32,7 @@ export default {
       orders: [
         {
           _id: "lygh23671347",
-          total_amount: "₱1,700",
+          total_amount: "₱1,7000",
           created_date: "May 5, 2019",
           delivered_date: "May 5, 2019",
           status: "Delivered"
