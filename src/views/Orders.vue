@@ -148,7 +148,7 @@ const types = [
     price: 80
   },
   {
-    name: "Wll Milled",
+    name: "Well-Milled",
     price: 63.6
   },
   {
