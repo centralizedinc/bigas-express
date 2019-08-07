@@ -125,7 +125,7 @@ export default {
             .then(result=>{
                 _self.isLoading=false;
                 _self.$notification.success({
-                    message:`${_self.params.ref_no} - Delivery Confirmed!`,
+                    message:'Order No: 2019-0021830-1 - Delivery Confirmed!',
                     description:'The item(s) was successfully delivered.'
                 })
             })
