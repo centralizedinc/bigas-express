@@ -32,23 +32,14 @@ export default {
       orders: [
         {
           _id: "2019-0021830-1",
-          total_amount: "₱1,700",
-          created_date: "May 5, 2019",
-          delivered_date: "May 5, 2019",
           status: "Delivered"
         },
         {
           _id: "2019-0025820-2",
-          total_amount: "₱1,700",
-          created_date: "August 7, 2019",
-          delivered_date: "-",
           status: "On Delivery"
         },
         {
           _id: "2019-0021710-3",
-          total_amount: "₱1,700",
-          created_date: "August 5, 2019",
-          delivered_date: "August 5, 2019",
           status: "Delivered"
         }
       ],
@@ -56,18 +47,6 @@ export default {
         {
           title: "Order #",
           dataIndex: "_id"
-        },
-        {
-          title: "Amount Purchased",
-          dataIndex: "total_amount"
-        },
-        {
-          title: "Order Date",
-          dataIndex: "created_date"
-        },
-        {
-          title: "Delivered Date",
-          dataIndex: "delivered_date"
         },
         {
           title: "Status",
@@ -78,27 +57,44 @@ export default {
       items: [
         {
           order_type: "Dinorado Rice",
+          created_date: "May 5, 2019",
+          delivered_date: "May 5, 2019",
           price: "₱" + 50,
           qty: "10 kgs",
           total: "₱" + 500
         },
         {
           order_type: "Jasponica Rice",
+          created_date: "August 7, 2019",
+          delivered_date: "-",
           price: "₱" + 60,
           qty: "10 kgs",
           total: "₱" + 600
         },
         {
           order_type: "Milagrosa Rice",
+          created_date: "August 5, 2019",
+          delivered_date: "August 5, 2019",
           price: "₱" + 60,
           qty: "10 kgs",
           total: "₱" + 600
+        },
+        {
+          total: "Total Amount: ₱1,700"
         }
       ],
       colOrder: [
         {
           title: "Rice Name",
           dataIndex: "order_type"
+        },
+        {
+          title: "Order Date",
+          dataIndex: "created_date"
+        },
+        {
+          title: "Delivered Date",
+          dataIndex: "delivered_date"
         },
         {
           title: "Price per Kilo(kg)",
