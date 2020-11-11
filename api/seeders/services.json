@@ -1,0 +1,22 @@
+[{
+    "_id": {
+        "$oid": "5d49405baba8880017ab2fbb"
+    },
+    "code": "GET_PROFILE",
+    "url": "https://graph.facebook.com/v2.6/{#fb_sender}?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token={#fb_token}",
+    "method": "GET",
+    "platform": "facebook",
+    "mappings": [
+        {
+            "type": "insert",
+            "field": "first_name",
+            "key": "{#fname}"
+        },
+        {
+            "type": "insert",
+            "field": "last_name",
+            "key": "{#lname}"
+        }
+    ],
+    "__v": 0
+}]

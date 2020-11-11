@@ -1,0 +1,628 @@
+[
+    {
+        "_id": {
+            "$oid": "5d49405baba8880017ab2fba"
+        },
+        "postback": "GET_STARTED",
+        "message": {
+            "text": "\"Marami ka pang kakaining bigas...🌾\", kaya dito ka na sa murang bigasan. Hi {#fname}!👋 Welcome to Bigas Express."
+        },
+        "service": "GET_PROFILE",
+        "index": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d49ea147c213e60b8ec4d98"
+        },
+        "postback": "GET_STARTED",
+        "message": {
+            "text": "Ako si Raissa, and i will be your assistant. What do you want me to do for you?"
+        },
+        "service": "GET_PROFILE",
+        "index": 1,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d49eb1e7c213e60b8ec4db5"
+        },
+        "postback": "GET_STARTED",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [
+                        {
+                            "title": "Place Order",
+                            "image_url": "https://i.postimg.cc/SRSFQs9t/order.png",
+                            "subtitle": "Shop for bulk rice and wholesale rice for your restaurant or business",
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "View Rice Varieties",
+                                    "payload": "BULK"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Order History",
+                            "image_url": "https://i.postimg.cc/FRgznYmP/history.png",
+                            "subtitle": "Keep track of all current and past orders and their status in the order process",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order/history?sender={#sender}",
+                                    "title": "View History",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Track My Order",
+                            "image_url": "https://i.postimg.cc/FsPd4kS8/track.png",
+                            "subtitle": "Check the delivery status of your order",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order/track?sender={#sender}",
+                                    "title": "Track Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "FAQ's",
+                            "image_url": "https://i.postimg.cc/7YLhmPRV/faq.png",
+                            "subtitle": "List of frequently asked questions and answers on Bigasan Express",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/about?sender={#sender}",
+                                    "title": "See FAQs",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "index": 2,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a1a1a7c213e60b8ec5a39"
+        },
+        "postback": "AGAIN",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": "https://media.tenor.com/images/84c676c1970c48e9be51a53a8eb69c23/tenor.gif",
+                    "is_reusable": false
+                }
+            }
+        },
+        "index": 1
+    },
+    {
+        "_id": {
+            "$oid": "5d4a2eba7c213e60b8ec5dba"
+        },
+        "postback": "CALLBACK_CONFIRMED",
+        "type": "TEXT",
+        "message": {
+            "text": "Thank you for your purchase. As a proof of your transaction, here is your QR code "
+        },
+        "index": 0,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a36e37c213e60b8ec5ea9"
+        },
+        "postback": "CALLBACK_CONFIRMED",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": "https://i.postimg.cc/QxpbC2gv/Screen-Shot-2019-08-07-at-10-25-59-AM.png",
+                    "is_reusable": true
+                }
+            }
+        },
+        "index": 1
+    },
+    {
+        "_id": {
+            "$oid": "5d4a392c7c213e60b8ec5f36"
+        },
+        "postback": "CALLBACK_CONFIRMED",
+        "type": "TEXT",
+        "message": {
+            "text": "Don't forget to show this QR code to the delivery personnel. Salamat sa pag order {#fname}!"
+        },
+        "index": 2,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a39c07c213e60b8ec5f4b"
+        },
+        "postback": "CALLBACK_CONFIRMED",
+        "type": "TEXT",
+        "message": {
+            "text": "Para hindi mabitin sa extra rice, wag kalimutan ang Bigas Express sa susunod mong order! ☺️",
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Order Again",
+                    "payload": "AGAIN",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                }
+            ]
+        },
+        "index": 3,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a3a0b7c213e60b8ec5f70"
+        },
+        "postback": "AGAIN",
+        "type": "TEXT",
+        "message": {
+            "text": "Welcome back, {#fname}!"
+        },
+        "index": 0,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a3b0a7c213e60b8ec5f9d"
+        },
+        "postback": "AGAIN",
+        "type": "TEXT",
+        "message": {
+            "text": "Do you want to reorder the usual?",
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Yes",
+                    "payload": "YES",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                },
+                {
+                    "content_type": "text",
+                    "title": "New Order",
+                    "payload": "GET_STARTED",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                }
+            ]
+        },
+        "index": 2,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a3c0c7c213e60b8ec5fcc"
+        },
+        "postback": "ABT",
+        "type": "TEXT",
+        "message": {
+            "text": "Bigas Express brief company profile here"
+        },
+        "index": 0,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a5d6d7c213e60b8ec6525"
+        },
+        "postback": "OH_MSG",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": " Would you like to check your previous order? ",
+                    "buttons": [
+                        {
+                            "type": "web_url",
+                            "url": "https://bigas-express.herokuapp.com/#/order/history?sender={#sender}",
+                            "title": "View History",
+                            "webview_height_ratio": "tall",
+                            "messenger_extensions": true
+                        }
+                    ]
+                }
+            },
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Not Now",
+                    "payload": "MAIN",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                }
+            ]
+        },
+        "index": 0,
+        "service": "",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a15027c213e60b8ec5926"
+        },
+        "postback": "MAIN",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [
+                        {
+                            "title": "Place Order",
+                            "image_url": "https://i.postimg.cc/SRSFQs9t/order.png",
+                            "subtitle": "Shop for bulk rice and wholesale rice for your restaurant or business",
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "View Rice Varieties",
+                                    "payload": "BULK"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Order History",
+                            "image_url": "https://i.postimg.cc/FRgznYmP/history.png",
+                            "subtitle": "Keep track of all current and past orders and their status in the order process",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order/history?sender={#sender}",
+                                    "title": "View History",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Track My Order",
+                            "image_url": "https://i.postimg.cc/FsPd4kS8/track.png",
+                            "subtitle": "Check the delivery status of your order",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order/track?sender={#sender}",
+                                    "title": "Track Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "FAQ's",
+                            "image_url": "https://i.postimg.cc/7YLhmPRV/faq.png",
+                            "subtitle": "List of frequently asked questions and answers on Bigasan Express",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/about/track?sender={#sender}",
+                                    "title": "See FAQs",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "index": 0,
+        "service": "",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a144a7c213e60b8ec5901"
+        },
+        "postback": "BULK",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [
+                        {
+                            "title": "Premium Rice",
+                            "image_url": "https://i.postimg.cc/W1B4NG1W/premium.png",
+                            "subtitle": "",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order/map",
+                                    "title": "Place Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Well-Milled Rice",
+                            "image_url": "https://i.postimg.cc/CM7dGnc5/wellmilled.png",
+                            "subtitle": "",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order?sender={#sender}&fname={#fname}&lname={#lname}&type=1",
+                                    "title": "Place Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Regular Rice",
+                            "image_url": "https://i.postimg.cc/TPn3pKyR/regular.png",
+                            "subtitle": "",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order?sender={#sender}&fname={#fname}&lname={#lname}&type=2",
+                                    "title": "Place Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Dinorado Rice",
+                            "image_url": "https://i.postimg.cc/x1JCVxnN/dinorado.png",
+                            "subtitle": "",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order?sender={#sender}&fname={#fname}&lname={#lname}&type=3",
+                                    "title": "Place Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Jasponica Rice",
+                            "image_url": "https://i.postimg.cc/7hK6wj50/jasmonica.png",
+                            "subtitle": "",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order?sender={#sender}&fname={#fname}&lname={#lname}&type=4",
+                                    "title": "Place Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Milagrosa Rice",
+                            "image_url": "https://i.postimg.cc/PJXJGd5d/milagrosa.png",
+                            "subtitle": "",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bigas-express.herokuapp.com/#/order?sender={#sender}&fname={#fname}&lname={#lname}&type=5",
+                                    "title": "Place Order",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Not Now",
+                    "payload": "MAIN",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                }
+            ]
+        },
+        "index": 0,
+        "service": "GET_PROFILE",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a5ea27c213e60b8ec656b"
+        },
+        "postback": "TR_MSG",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": " Would you like to track your order now? ",
+                    "buttons": [
+                        {
+                            "type": "web_url",
+                            "url": "https://bigas-express.herokuapp.com/#/order/track?sender={#sender}",
+                            "title": "Track Order",
+                            "webview_height_ratio": "tall",
+                            "messenger_extensions": true
+                        }
+                    ]
+                }
+            },
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Not Now",
+                    "payload": "MAIN",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                }
+            ]
+        },
+        "index": 0,
+        "service": "",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a62077c213e60b8ec662b"
+        },
+        "postback": "PERSISTENT_MENU",
+        "type": "TEXT",
+        "message": {
+            "persistent_menu": [
+                {
+                    "locale": "default",
+                    "composer_input_disabled": true,
+                    "call_to_actions": [
+                        {
+                            "title": "🌾 Place Order",
+                            "type": "postback",
+                            "payload": "BULK"
+                        },
+                        {
+                            "title": " 📋 My Orders",
+                            "type": "nested",
+                            "call_to_actions": [
+                                {
+                                    "title": "📑 Order History",
+                                    "type": "postback",
+                                    "payload": "OH_MSG"
+                                },
+                                {
+                                    "title": "🏍 Track My Order",
+                                    "type": "postback",
+                                    "payload": "TR_MSG"
+                                }
+                            ]
+                        },
+                        {
+                            "title": " ℹ️ About Bigas Express",
+                            "type": "nested",
+                            "call_to_actions": [
+                                {
+                                    "title": "❓ FAQs",
+                                    "type": "postback",
+                                    "payload": "ABT_MSG"
+                                },
+                                {
+                                    "title": " 🌾 About Us",
+                                    "type": "postback",
+                                    "payload": "ABT"
+                                },
+                                {
+                                    "title": " 🔄 Restart",
+                                    "type": "postback",
+                                    "payload": "GET_STARTED"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "locale": "zh_CN",
+                    "composer_input_disabled": false
+                }
+            ]
+        },
+        "index": 0,
+        "service": "",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a67cc7c213e60b8ec6941"
+        },
+        "postback": "ABT_MSG",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": " Please read on our Most Asked Questions, and let us know if you still have some 😊",
+                    "buttons": [
+                        {
+                            "type": "web_url",
+                            "url": "https://bigas-express.herokuapp.com/#/about?sender={#sender}",
+                            "title": "Read FAQs",
+                            "webview_height_ratio": "tall",
+                            "messenger_extensions": true
+                        }
+                    ]
+                }
+            },
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Not Now",
+                    "payload": "MAIN",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                }
+            ]
+        },
+        "index": 0,
+        "service": "",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5d4a46377c213e60b8ec617a"
+        },
+        "postback": "ABT",
+        "type": "TEXT",
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": " Need further assistance? Talk to us",
+                    "buttons": [
+                        {
+                            "type": "phone_number",
+                            "title": "Call Now",
+                            "payload": "+639177094945"
+                        }
+                    ]
+                }
+            },
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Back to Main",
+                    "payload": "MAIN",
+                    "image_url": "https://cdn3.iconfinder.com/data/icons/food-3-11/128/food_Sack-Rice-Wheat-Grain-Cereal-512.png"
+                }
+            ]
+        },
+        "index": 1,
+        "service": "",
+        "__v": 0
+    }
+]
